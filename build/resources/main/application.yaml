@@ -1,0 +1,31 @@
+spring:
+  jackson:
+    # snake case style for response json
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: NON_NULL
+
+  datasource:
+    url: jdbc:mysql://mysql-service.train-ticket-backend-aznrpj-10692.svc.cluster.local:3306/123o6?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: create-drop
+
+
+# sa-token:
+#   token-name: token
+#   # 30 days
+#   timeout: 2592000
+#   # no expiration
+#   activity-timeout: -1
+#   # multi login
+#   is-concurrent: true
+#   is-share: true
+#   token-style: uuid
+#   is-log: true
+#   is-read-cookie: false
