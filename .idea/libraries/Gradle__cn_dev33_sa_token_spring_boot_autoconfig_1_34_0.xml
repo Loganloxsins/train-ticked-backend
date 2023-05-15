@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.dev33:sa-token-spring-boot-autoconfig:1.34.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="cn.dev33" artifactId="sa-token-spring-boot-autoconfig" version="1.34.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.dev33/sa-token-spring-boot-autoconfig/1.34.0/9909d398dfc792d2ac4ec3c396c418b5da20152e/sa-token-spring-boot-autoconfig-1.34.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.dev33/sa-token-spring-boot-autoconfig/1.34.0/7c869c1eec71f93c0963c8c5ca8c6ffb96ca7223/sa-token-spring-boot-autoconfig-1.34.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
