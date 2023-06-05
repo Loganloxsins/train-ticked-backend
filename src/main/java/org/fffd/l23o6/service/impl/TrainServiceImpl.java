@@ -17,14 +17,17 @@ import org.fffd.l23o6.service.TrainService;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class TrainServiceImpl implements TrainService {
     private final TrainDao trainDao;
+    private final RouteDao routeDao;
 
     @Override
     public TrainDetailVO getTrain(Long trainId){
@@ -33,8 +36,18 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     public List<TrainVO> listTrains(Long startStationId, Long endStationId, String date){
-        List<TrainEntity> trainEntities=trainDao.findListTrains(startStationId, endStationId, date);
-        return trainEntities.stream().map(TrainMapper.INSTANCE::toTrainVO).collect(Collectors.toList());
+//        List<TrainEntity> trainEntities=trainDao.findListTrains(startStationId, endStationId, date);
+//        return trainEntities.stream().map(TrainMapper.INSTANCE::toTrainVO).collect(Collectors.toList());
+        List<TrainEntity> trainEntities=trainDao.findByDate(date);
+        List<TrainEntity> trains=new ArrayList<>();
+        for (TrainEntity trainEntity:trainEntities){
+            RouteEntity routeEntity=routeDao.findById(trainEntity.getRouteId()).get();
+            List<Long> stationIds=routeEntity.getStationIds();
+            if(Objects.equals(stationIds.get(0), startStationId) && Objects.equals(stationIds.get(stationIds.size() - 1), endStationId)){
+                trains.add(trainEntity);
+            }
+        }
+        return trains.stream().map(TrainMapper.INSTANCE::toTrainVO).collect(Collectors.toList());
     }
 
     @Override

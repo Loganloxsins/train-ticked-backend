@@ -59,9 +59,9 @@ public class TrainEntity {
     private Long routeId;
 
 //    @NotNull
-//    @Type(BooleanArrayType.class)
-//    @Column(name = "seats", columnDefinition = "boolean[][]")
-//    private boolean[][] seats;
+    @Type(BooleanArrayType.class)
+    @Column(name = "seats", columnDefinition = "boolean[][]")
+    private boolean[][] seats;
 
     @NotNull
     private TrainType trainType;

@@ -3,10 +3,14 @@ package org.fffd.l23o6.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.fffd.l23o6.dao.RouteDao;
 import org.fffd.l23o6.dao.StationDao;
+import org.fffd.l23o6.dao.TrainDao;
 import org.fffd.l23o6.exception.BizError;
 import org.fffd.l23o6.mapper.StationMapper;
+import org.fffd.l23o6.pojo.entity.RouteEntity;
 import org.fffd.l23o6.pojo.entity.StationEntity;
+import org.fffd.l23o6.pojo.entity.TrainEntity;
 import org.fffd.l23o6.pojo.vo.station.StationVO;
 import org.fffd.l23o6.service.StationService;
 import org.springframework.data.domain.Sort;
@@ -19,6 +23,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StationServiceImpl implements StationService{
     private final StationDao stationDao;
+    private final RouteDao routeDao;
+    private final TrainDao trainDao;
+
     @Override
     public StationVO getStation(Long stationId){
         return StationMapper.INSTANCE.toStationVO(stationDao.findById(stationId).get());
@@ -44,7 +51,16 @@ public class StationServiceImpl implements StationService{
 
     @Override
     public void deleteStation(Long stationId){
-        StationEntity entity=stationDao.findById(stationId).get();
-        stationDao.delete(entity);
+        StationEntity stationEntity=stationDao.findById(stationId).get();
+        stationDao.delete(stationEntity);
+        List<RouteEntity> routeEntities=routeDao.findAll();
+        for(RouteEntity routeEntity:routeEntities){
+            List<Long> stationIds=routeEntity.getStationIds();
+            if(stationIds.contains(stationId)){
+                routeDao.delete(routeEntity);
+                List<TrainEntity> trainEntities=trainDao.findByRouteId(routeEntity.getId());
+                trainDao.deleteAll(trainEntities);
+            }
+        }
     }
 }

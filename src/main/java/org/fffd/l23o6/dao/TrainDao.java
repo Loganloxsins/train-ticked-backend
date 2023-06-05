@@ -4,12 +4,17 @@ import org.fffd.l23o6.pojo.entity.TrainEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface TrainDao extends JpaRepository<TrainEntity, Long>{
-    @Query(value = "select * from train_entity t where t.startStationId=?1 and t.endStationId=?2 and t.date=?3", nativeQuery = true)
-    List<TrainEntity> findListTrains(Long startStationId, Long endStationId, String date);
+//    @Query(value = "select * from train_entity t where t.startStationId=?1 and t.endStationId=?2 and t.date=?3", nativeQuery = true)
+//    List<TrainEntity> findListTrains(Long startStationId, Long endStationId, String date);
+
+    List<TrainEntity> findByDate(String date);
 
     TrainEntity findByName(String name);
+
+    List<TrainEntity> findByRouteId(Long routeid);
     
 }

@@ -5,10 +5,12 @@ import java.util.stream.Collectors;
 
 import io.github.lyc8503.spring.starter.incantation.exception.BizException;
 import org.fffd.l23o6.dao.RouteDao;
+import org.fffd.l23o6.dao.TrainDao;
 import org.fffd.l23o6.exception.BizError;
 import org.fffd.l23o6.mapper.RouteMapper;
 import org.fffd.l23o6.mapper.StationMapper;
 import org.fffd.l23o6.pojo.entity.RouteEntity;
+import org.fffd.l23o6.pojo.entity.TrainEntity;
 import org.fffd.l23o6.pojo.vo.route.RouteVO;
 import org.fffd.l23o6.service.RouteService;
 import org.springframework.data.domain.Sort;
@@ -20,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RouteServiceImpl implements RouteService {
     private final RouteDao routeDao;
+    private final TrainDao trainDao;
 
     @Override
     public void addRoute(String name, List<Long> stationIds) {
@@ -50,7 +53,9 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public void deleteRoute(Long routeId){
-        RouteEntity entity=routeDao.findById(routeId).get();
-        routeDao.delete(entity);
+        List<TrainEntity> trainEntities=trainDao.findByRouteId(routeId);
+        trainDao.deleteAll(trainEntities);
+        RouteEntity routeEntity=routeDao.findById(routeId).get();
+        routeDao.delete(routeEntity);
     }
 }

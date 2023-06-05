@@ -23,8 +23,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TrainController {
     private final TrainService trainService;
-    // TODO: 2023/5/26
-    // add member variable
 
     @GetMapping("train")
     public CommonResponse<List<TrainVO>> listTrains(@Valid ListTrainRequest request) {
