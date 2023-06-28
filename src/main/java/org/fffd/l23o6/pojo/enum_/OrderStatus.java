@@ -1,4 +1,4 @@
-package org.fffd.l23o6.enum_.order;
+package org.fffd.l23o6.pojo.enum_;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,14 +13,5 @@ public enum OrderStatus {
 
     public String getText() {
         return this.text;
-    }
-
-    public static OrderStatus fromString(String text) {
-        for (OrderStatus b : OrderStatus.values()) {
-            if (b.text.equalsIgnoreCase(text)) {
-                return b;
-            }
-        }
-        return null;
     }
 }

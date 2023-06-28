@@ -8,7 +8,7 @@ import org.fffd.l23o6.pojo.vo.route.RouteVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-05T14:32:55+0800",
+    date = "2023-06-28T23:37:51+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class RouteMapperImpl implements RouteMapper {

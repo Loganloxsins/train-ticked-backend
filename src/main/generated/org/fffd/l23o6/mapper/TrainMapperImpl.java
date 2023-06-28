@@ -5,64 +5,24 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.fffd.l23o6.pojo.entity.TrainEntity;
+import org.fffd.l23o6.pojo.enum_.TrainType;
 import org.fffd.l23o6.pojo.vo.train.AdminTrainVO;
-import org.fffd.l23o6.pojo.vo.train.TrainDetailVO;
 import org.fffd.l23o6.pojo.vo.train.TrainVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-05T14:32:55+0800",
+    date = "2023-06-28T23:37:51+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class TrainMapperImpl implements TrainMapper {
 
     @Override
-    public TrainDetailVO toTrainDetailVO(TrainEntity trainEntity) {
-        if ( trainEntity == null ) {
+    public AdminTrainVO toAdminTrainVO(TrainEntity TrainEntity) {
+        if ( TrainEntity == null ) {
             return null;
         }
 
-        TrainDetailVO.TrainDetailVOBuilder trainDetailVO = TrainDetailVO.builder();
-
-        trainDetailVO.id( trainEntity.getId() );
-        trainDetailVO.name( trainEntity.getName() );
-        trainDetailVO.date( trainEntity.getDate() );
-        List<Date> list = trainEntity.getDepartureTimes();
-        if ( list != null ) {
-            trainDetailVO.departureTimes( new ArrayList<Date>( list ) );
-        }
-        List<Date> list1 = trainEntity.getArrivalTimes();
-        if ( list1 != null ) {
-            trainDetailVO.arrivalTimes( new ArrayList<Date>( list1 ) );
-        }
-        List<String> list2 = trainEntity.getExtraInfos();
-        if ( list2 != null ) {
-            trainDetailVO.extraInfos( new ArrayList<String>( list2 ) );
-        }
-
-        return trainDetailVO.build();
-    }
-
-    @Override
-    public TrainVO toTrainVO(TrainEntity trainEntity) {
-        if ( trainEntity == null ) {
-            return null;
-        }
-
-        TrainVO.TrainVOBuilder trainVO = TrainVO.builder();
-
-        trainVO.id( trainEntity.getId() );
-        trainVO.name( trainEntity.getName() );
-
-        return trainVO.build();
-    }
-
-    @Override
-    public AdminTrainVO toAdminTrainVO(TrainEntity trainEntity) {
-        if ( trainEntity == null ) {
-            return null;
-        }
-
+        String trainType = null;
         Long id = null;
         String name = null;
         Long routeId = null;
@@ -71,25 +31,58 @@ public class TrainMapperImpl implements TrainMapper {
         List<Date> arrivalTimes = null;
         List<String> extraInfos = null;
 
-        id = trainEntity.getId();
-        name = trainEntity.getName();
-        routeId = trainEntity.getRouteId();
-        date = trainEntity.getDate();
-        List<Date> list = trainEntity.getDepartureTimes();
+        trainType = trainEntityTrainTypeText( TrainEntity );
+        id = TrainEntity.getId();
+        name = TrainEntity.getName();
+        routeId = TrainEntity.getRouteId();
+        date = TrainEntity.getDate();
+        List<Date> list = TrainEntity.getDepartureTimes();
         if ( list != null ) {
             departureTimes = new ArrayList<Date>( list );
         }
-        List<Date> list1 = trainEntity.getArrivalTimes();
+        List<Date> list1 = TrainEntity.getArrivalTimes();
         if ( list1 != null ) {
             arrivalTimes = new ArrayList<Date>( list1 );
         }
-        List<String> list2 = trainEntity.getExtraInfos();
+        List<String> list2 = TrainEntity.getExtraInfos();
         if ( list2 != null ) {
             extraInfos = new ArrayList<String>( list2 );
         }
 
-        AdminTrainVO adminTrainVO = new AdminTrainVO( id, name, routeId, date, departureTimes, arrivalTimes, extraInfos );
+        AdminTrainVO adminTrainVO = new AdminTrainVO( id, name, trainType, routeId, date, departureTimes, arrivalTimes, extraInfos );
 
         return adminTrainVO;
+    }
+
+    @Override
+    public TrainVO toTrainVO(TrainEntity TrainEntity) {
+        if ( TrainEntity == null ) {
+            return null;
+        }
+
+        TrainVO.TrainVOBuilder trainVO = TrainVO.builder();
+
+        trainVO.id( TrainEntity.getId() );
+        trainVO.name( TrainEntity.getName() );
+        if ( TrainEntity.getTrainType() != null ) {
+            trainVO.trainType( TrainEntity.getTrainType().name() );
+        }
+
+        return trainVO.build();
+    }
+
+    private String trainEntityTrainTypeText(TrainEntity trainEntity) {
+        if ( trainEntity == null ) {
+            return null;
+        }
+        TrainType trainType = trainEntity.getTrainType();
+        if ( trainType == null ) {
+            return null;
+        }
+        String text = trainType.getText();
+        if ( text == null ) {
+            return null;
+        }
+        return text;
     }
 }

@@ -25,7 +25,6 @@ public class StationServiceImpl implements StationService{
     private final StationDao stationDao;
     private final RouteDao routeDao;
     private final TrainDao trainDao;
-
     @Override
     public StationVO getStation(Long stationId){
         return StationMapper.INSTANCE.toStationVO(stationDao.findById(stationId).get());
@@ -63,4 +62,5 @@ public class StationServiceImpl implements StationService{
             }
         }
     }
+
 }

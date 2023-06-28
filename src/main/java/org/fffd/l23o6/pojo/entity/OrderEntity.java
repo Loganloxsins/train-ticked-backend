@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-import org.fffd.l23o6.enum_.order.OrderStatus;
+import org.fffd.l23o6.pojo.enum_.OrderStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import java.util.Date;

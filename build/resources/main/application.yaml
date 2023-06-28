@@ -5,7 +5,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
     serialization:
       write-dates-as-timestamps: true
-# TODO: 2023/5/26  change to your database and account
+  # TODO: 2023/5/26  change to your database and account
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/l23o6

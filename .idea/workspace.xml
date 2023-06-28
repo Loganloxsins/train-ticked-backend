@@ -5,27 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f525e9d5-baaf-4799-89be-b48baf8b040a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/OrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/enum_/TrainType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/CreateOrderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/OrderIdVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/OrderVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/PatchOrderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/train/GSeriesSeatStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/train/KSeriesSeatStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/train/TrainSeatStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/controller/TrainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/controller/TrainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/pojo/vo/train/TrainVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/pojo/vo/train/TrainVO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/service/TrainService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/fffd/l23o6/service/TrainService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/TrainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/TrainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/dao/RouteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/dao/RouteDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/dao/TrainDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/dao/TrainDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/enum_/order/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/enum_/OrderStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/exception/BizError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/exception/BizError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/TrainMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/TrainMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/TrainEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/TrainEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/PagedResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/PagedResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/AddTrainRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/AddTrainRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/AdminTrainVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/AdminTrainVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/TrainDetailVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/TrainDetailVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/TrainVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/train/TrainVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/user/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/user/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/RouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/RouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/TrainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/TrainService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/RouteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/RouteServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/StationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/StationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/fffd/l23o6/L23o6ApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/fffd/l23o6/L23o6ApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +88,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lab5" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2QVvT871u3AXRkKJV0PayeH1xpb" />
@@ -72,6 +108,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jyp/IdeaProjects/train-ticket-backend/src/main/java/org/fffd/l23o6/pojo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -90,6 +127,19 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6\pojo" />
+      <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6" />
+      <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6\pojo\vo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.fffd.l23o6.service.impl" />
+      <recent name="org.fffd.l23o6.controller" />
+      <recent name="org.fffd.l23o6.mapper" />
+      <recent name="org.fffd.l23o6.service" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="L23o6Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="l23o6.main" />
@@ -112,10 +162,25 @@
       <workItem from="1685548546802" duration="1099000" />
       <workItem from="1685580358649" duration="19039000" />
       <workItem from="1685946656576" duration="6207000" />
+      <workItem from="1686043923649" duration="11000" />
+      <workItem from="1687875721342" duration="3133000" />
+      <workItem from="1687934444638" duration="3976000" />
+      <workItem from="1687940094695" duration="2972000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
