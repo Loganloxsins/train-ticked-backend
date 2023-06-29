@@ -11,7 +11,7 @@ import org.fffd.l23o6.pojo.vo.train.TrainVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-28T23:37:51+0800",
+    date = "2023-06-30T00:05:02+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class TrainMapperImpl implements TrainMapper {
@@ -55,18 +55,20 @@ public class TrainMapperImpl implements TrainMapper {
     }
 
     @Override
-    public TrainVO toTrainVO(TrainEntity TrainEntity) {
-        if ( TrainEntity == null ) {
+    public TrainVO toTrainVO(TrainEntity TrainEntity, Long startStationId, Long endStationId) {
+        if ( TrainEntity == null && startStationId == null && endStationId == null ) {
             return null;
         }
 
         TrainVO.TrainVOBuilder trainVO = TrainVO.builder();
 
-        trainVO.id( TrainEntity.getId() );
-        trainVO.name( TrainEntity.getName() );
-        if ( TrainEntity.getTrainType() != null ) {
-            trainVO.trainType( TrainEntity.getTrainType().name() );
+        if ( TrainEntity != null ) {
+            trainVO.trainType( trainEntityTrainTypeText( TrainEntity ) );
+            trainVO.id( TrainEntity.getId() );
+            trainVO.name( TrainEntity.getName() );
         }
+        trainVO.startStationId( startStationId );
+        trainVO.endStationId( endStationId );
 
         return trainVO.build();
     }

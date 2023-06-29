@@ -1,5 +1,6 @@
 package org.fffd.l23o6.mapper;
 
+import org.fffd.l23o6.dao.RouteDao;
 import org.fffd.l23o6.pojo.entity.TrainEntity;
 import org.fffd.l23o6.pojo.entity.RouteEntity;
 import org.fffd.l23o6.pojo.vo.train.AdminTrainVO;
@@ -9,11 +10,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Date;
 import java.util.List;
 
 @Mapper
+@Service
 public interface TrainMapper {
     TrainMapper INSTANCE = Mappers.getMapper(TrainMapper.class);
 
@@ -21,25 +27,26 @@ public interface TrainMapper {
     AdminTrainVO toAdminTrainVO(TrainEntity TrainEntity);
 
     @Mapping(source = "TrainEntity.trainType.text", target = "trainType")
-    @Mapping(source = "routeId", target = "startStationId")
-    @Mapping(source = "routeId", target = "endStationId")
-    @Mapping(source = "departureTimes", target = "departureTime", qualifiedByName = "getFirstDate")
-    @Mapping(source = "arrivalTimes", target = "arrivalTime", qualifiedByName = "getFirstDate")
-    @Mapping(target = "ticketInfo", ignore = true)
-    TrainVO toTrainVO(TrainEntity TrainEntity);
+    @Mapping(source = "startStationId", target = "startStationId")
+    @Mapping(source = "endStationId", target = "endStationId")
+    @Mapping(target = "TrainEntity.ticketInfo", ignore = true)
+    TrainVO toTrainVO(TrainEntity TrainEntity, Long startStationId, Long endStationId);
 
-    @Named("getFirstDate")
-    default Date getFirstDate(List<Date> dates) {
-        if (dates != null && !dates.isEmpty()) {
-            return dates.get(0);
-        }
-        return null;
-    }
-
-    @Named("getEndStationId")
-    default Long getEndStationId(@Context Long endStationId) {
-        return endStationId;
-    }
-
+//    @Named("getDepartureTime")
+//    default Date getDepartureTime(List<Date> dates) {
+//        if (dates != null && !dates.isEmpty()) {
+//            return dates.get(0);
+//        }
+//        return null;
+//    }
+//
+//    @Named("getArrivalTime")
+//    default Date getArrivalTime(List<Date> dates) {
+//        if (dates != null && !dates.isEmpty()) {
+//            int size=dates.size();
+//            return dates.get(size-1);
+//        }
+//        return null;
+//    }
 }
 

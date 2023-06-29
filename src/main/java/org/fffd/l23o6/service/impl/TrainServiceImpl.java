@@ -43,31 +43,32 @@ public class TrainServiceImpl implements TrainService {
     }
 
     @Override
-
     public List<TrainVO> listTrains(Long startStationId, Long endStationId, String date) {
         // TODO
         // First, get all routes contains [startCity, endCity]
         // Then, Get all trains on that day with the wanted routes
         List<RouteEntity> routeEntities=routeDao.findAll();
-        List<Long> routeIds=new ArrayList<>();
+        Long routeId;
+        List<TrainVO> trainVOS=new ArrayList<>();
         for(RouteEntity routeEntity:routeEntities){
             List<Long> stationIds=routeEntity.getStationIds();
             int i=stationIds.indexOf(startStationId);
             int j=stationIds.indexOf(endStationId);
             if(i!=-1&&j!=-1){
-                if(i<j) routeIds.add(routeEntity.getId());
+                if(i<j){
+                    routeId=routeEntity.getId();
+                    List<TrainEntity> trainEntities=trainDao.findByRouteIdAndDate(routeId, date);
+                    for(TrainEntity trainEntity:trainEntities){
+                        TrainVO trainVO=TrainMapper.INSTANCE.toTrainVO(trainEntity,startStationId,endStationId);
+                        trainVO.setDepartureTime(trainEntity.getDepartureTimes().get(i));
+                        trainVO.setArrivalTime(trainEntity.getArrivalTimes().get(j));
+                        trainVOS.add(trainVO);
+                    }
+                }
             }
         }
 
-        List<TrainEntity> listTrains=new ArrayList<>();
-        for(Long routeId:routeIds){
-            List<TrainEntity> trainEntities=trainDao.findByRouteIdAndDate(routeId, date);
-            listTrains.addAll(trainEntities);
-        }
-
-        return listTrains.stream()
-                .map(TrainMapper.INSTANCE::toTrainVO)
-                .collect(Collectors.toList());
+        return trainVOS;
     }
 
     @Override
