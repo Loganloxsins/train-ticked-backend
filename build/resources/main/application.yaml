@@ -1,16 +1,15 @@
+
+
 spring:
   jackson:
-    # snake case style for response json
-    default-property-inclusion: NON_NULL
-    property-naming-strategy: SNAKE_CASE
     serialization:
       write-dates-as-timestamps: true
-  # TODO: 2023/5/26  change to your database and account
+
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/l23o6
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password: zhdwmzhdn
+    password: Wjj20021113
 
   jpa:
     show-sql: true
@@ -19,5 +18,13 @@ spring:
       ddl-auto: update
 
 sa-token:
+#   token-name: token
+#   # 30 days
+#   timeout: 2592000
+#   # no expiration
+#   activity-timeout: -1
+#   # multi login
+#   is-concurrent: true
+#   is-share: true
   token-style: uuid
   is-log: true

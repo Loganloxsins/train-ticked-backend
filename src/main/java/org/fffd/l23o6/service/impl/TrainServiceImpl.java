@@ -44,6 +44,7 @@ public class TrainServiceImpl implements TrainService {
 
     @Override
     public List<TrainVO> listTrains(Long startStationId, Long endStationId, String date) {
+        // TODO
         // First, get all routes contains [startCity, endCity]
         // Then, Get all trains on that day with the wanted routes
         List<RouteEntity> routeEntities=routeDao.findAll();
@@ -63,7 +64,9 @@ public class TrainServiceImpl implements TrainService {
             listTrains.addAll(trainEntities);
         }
 
-        return listTrains.stream().map(TrainMapper.INSTANCE::toTrainVO).collect(Collectors.toList());
+        return listTrains.stream()
+                .map(TrainMapper.INSTANCE::toTrainVO)
+                .collect(Collectors.toList());
     }
 
     @Override
