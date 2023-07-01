@@ -1,9 +1,6 @@
 package org.fffd.l23o6.util.strategy.train;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import jakarta.annotation.Nullable;
 
@@ -37,7 +34,7 @@ public class GSeriesSeatStrategy extends TrainSeatStrategy {
         for (String s : Arrays.asList("4车1A","4车1B","4车1C","4车1D","4车2F","4车2A","4车2B","4车2C","4车2D","4车2F","4车3A","4车3B","4车3C","4车3D","4车3F")) {
             SECOND_CLASS_SEAT_MAP.put(counter++, s);
         }
-        
+
     }
 
     public enum GSeriesSeatType implements SeatType {
@@ -61,8 +58,39 @@ public class GSeriesSeatStrategy extends TrainSeatStrategy {
 
 
     public @Nullable String allocSeat(int startStationIndex, int endStationIndex, GSeriesSeatType type, boolean[][] seatMap) {
-        //endStationIndex - 1 = upper bound
-        // TODO
+        Map<Integer, String> map = TYPE_MAP.get(type);
+        int startSeat=-1;
+        int endSeat=-1;
+        for(Integer key: map.keySet()){
+            if(startSeat==-1) startSeat=key;
+            else startSeat=Math.min(key,startSeat);
+            endSeat=Math.max(key,endSeat);
+        }
+
+        if(!type.getText().equals("无座")) {
+            for (int i = startSeat; i<=endSeat;i++) {
+                boolean vacant=true;
+                for (int j = startStationIndex; j < endStationIndex; j++) {
+                    boolean[] seats = seatMap[j];
+                    if(seats[i]){
+                        vacant=false;
+                        break;
+                    }
+                }
+                if(vacant){
+                    for (int j = startStationIndex; j < endStationIndex; j++) {
+                        boolean[] seats = seatMap[j];
+                        seats[i]=true;
+                    }
+                    return map.get(i);
+                }
+            }
+            return null;
+        }
+//        else {
+//            if()
+//        }
+//        return "1车1A";
         return null;
     }
 

@@ -66,7 +66,36 @@ public class KSeriesSeatStrategy extends TrainSeatStrategy {
 
 
     public @Nullable String allocSeat(int startStationIndex, int endStationIndex, KSeriesSeatType type, boolean[][] seatMap) {
-        //endStationIndex - 1 = upper bound
+        Map<Integer, String> map = TYPE_MAP.get(type);
+        int startSeat=-1;
+        int endSeat=-1;
+        for(Integer key: map.keySet()){
+            if(startSeat==-1) startSeat=key;
+            else startSeat=Math.min(key,startSeat);
+            endSeat=Math.max(key,endSeat);
+        }
+
+        if(!type.getText().equals("无座")) {
+            for (int i = startSeat; i<=endSeat;i++) {
+                boolean vacant=true;
+                for (int j = startStationIndex; j < endStationIndex; j++) {
+                    boolean[] seats = seatMap[j];
+                    if(seats[i]){
+                        vacant=false;
+                        break;
+                    }
+                }
+
+                if(vacant){
+                    for (int j = startStationIndex; j < endStationIndex; j++) {
+                        boolean[] seats = seatMap[j];
+                        seats[i]=true;
+                    }
+                    return map.get(i);
+                }
+            }
+            return null;
+        }
         return null;
     }
 
