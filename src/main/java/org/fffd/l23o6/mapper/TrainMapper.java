@@ -32,21 +32,5 @@ public interface TrainMapper {
     @Mapping(target = "TrainEntity.ticketInfo", ignore = true)
     TrainVO toTrainVO(TrainEntity TrainEntity, Long startStationId, Long endStationId);
 
-//    @Named("getDepartureTime")
-//    default Date getDepartureTime(List<Date> dates) {
-//        if (dates != null && !dates.isEmpty()) {
-//            return dates.get(0);
-//        }
-//        return null;
-//    }
-//
-//    @Named("getArrivalTime")
-//    default Date getArrivalTime(List<Date> dates) {
-//        if (dates != null && !dates.isEmpty()) {
-//            int size=dates.size();
-//            return dates.get(size-1);
-//        }
-//        return null;
-//    }
 }
 
