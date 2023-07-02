@@ -6,7 +6,7 @@ import org.fffd.l23o6.pojo.vo.station.StationVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-28T23:37:51+0800",
+    date = "2023-07-02T03:56:49+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class StationMapperImpl implements StationMapper {

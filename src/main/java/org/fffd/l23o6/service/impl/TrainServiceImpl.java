@@ -70,10 +70,10 @@ public class TrainServiceImpl implements TrainService {
                         List<TicketInfo> ticketInfos=new ArrayList<>();
                         switch (trainEntity.getTrainType()) {
                             case HIGH_SPEED:
-                                int business_seat_price=Math.round((float)(1.455*hours*SPEED/2));
-                                int first_class_price=Math.round((float)(0.775*hours*SPEED/2));
-                                int second_class_price=Math.round((float) (0.485*hours*SPEED/2));
-                                int g_no_seat_price=Math.round((float) (0.485*hours*SPEED/2));
+                                int business_seat_price=(int) Math.round(1.455*hours*SPEED/2);
+                                int first_class_price=(int) Math.round(0.775*hours*SPEED/2);
+                                int second_class_price=(int) Math.round(0.485*hours*SPEED/2);
+                                int g_no_seat_price=(int) Math.round(0.485*hours*SPEED/2);
                                 TicketInfo businessSeat = new TicketInfo("商务座", 3, business_seat_price);
                                 ticketInfos.add(businessSeat);
                                 TicketInfo first_class = new TicketInfo("一等座", 12, first_class_price);
@@ -84,11 +84,11 @@ public class TrainServiceImpl implements TrainService {
                                 ticketInfos.add(g_no_seat);
                                 break;
                             case NORMAL_SPEED:
-                                int soft_sleeper_price=Math.round((float) (0.37026*hours*SPEED/4));
-                                int hard_sleeper_price=Math.round((float) (0.30855*hours*SPEED/4));
-                                int soft_seat_price=Math.round((float) (0.2057*hours*SPEED/4));
-                                int hard_seat_price=Math.round((float) (0.1542*hours*SPEED/4));
-                                int k_no_seat_price=Math.round((float) (0.1542*hours*SPEED/4));
+                                int soft_sleeper_price=(int) Math.round(0.37026*hours*SPEED/4);
+                                int hard_sleeper_price=(int) Math.round(0.30855*hours*SPEED/4);
+                                int soft_seat_price=(int) Math.round(0.2057*hours*SPEED/4);
+                                int hard_seat_price=(int) Math.round(0.1542*hours*SPEED/4);
+                                int k_no_seat_price=(int) Math.round(0.1542*hours*SPEED/4);
                                 TicketInfo soft_sleeper = new TicketInfo("软卧",8,soft_sleeper_price);
                                 ticketInfos.add(soft_sleeper);
                                 TicketInfo hard_sleeper = new TicketInfo("硬卧",12,hard_sleeper_price);

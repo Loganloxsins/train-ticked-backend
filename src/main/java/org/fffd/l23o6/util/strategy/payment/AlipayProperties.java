@@ -1,0 +1,28 @@
+package org.fffd.l23o6.util.strategy.payment;
+
+public class AlipayProperties {
+    // 支付宝网关
+    public static String gatewayUrl = "https://openapi.alipaydev.com/gateway.do";
+
+    // 应用ID,你的APPID
+    public static String app_id = "9021000122698301";
+
+    // 应用私钥，您的PKCS8格式RSA2私钥
+    public static String merchant_private_key = "MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCe31XgtwKrkwkyaKmnD8po6EgX3bYMxeb4oncPa+GJKXOhvlW6SEbkljBDomsAzFvzA8ZL2GTVuRHT4tzRO5WcqP02VGWeLMb0fqbebzTsnuV6BPOX1moT/zMPX8Vkntedr84vGC9TD1TL6fRsvCiJ1RWfPmsVYU/RQAsg3V+jJc9TOatvLX1hBeY5OJA1QeteWoBPUGsQo21zsS0kIQ14p6qK47zBRFDrBPkHCydYfhunRacOWgmN9F2I9FQ/fpiq68Fv8Goy+93jsoACso9Gmv/uN2/lrNNQUB0f314WUDH6w3WWThbbu+uKtroXd4sjmrz5HpZFdbEiqhV2TfWZAgMBAAECggEAKa+YLPpYLQTLqPplaXxvM8+e+wQlvHxA+oRGkTlRWFgUCyCSBerpDxmJWHXJddApYD5hTY1eB+Yjk2E3Z38m5pBAwHysnTBKk+SXjE3JqTyYIcgi0nhkJRMVJreOZ7R2Bt4WT60c3cJsEYU1qUJFsMTEg6AxIM8Dznfrc5gifAAJ5sWmAvB5K5ysMq16sevi1JlHeubFsE31A48kffZ4xaIdBjpuHPmp+LmuOmL9shbYHta73lEA578dlrEMp5DIKOJj2s6Mt/8p4nY9pHOlWl1rKeH/adYZ21o7++fe3QEPupZzzR4VnXuMQ+nzCV/j3NuSd2nsyq/a1TE328kewQKBgQDOEv9J4qY79JyqOJHuKPbpHAP5QC+xvqlbGhEkxE+YAc5z/V19oSY1X4IjGe58ywqc60S1bTK1ajVP5ZWTEUT7kB67yN3ohAquuXpuk8coA3NHEGsV1uTSiOMlvAEOpcJs2LhkzHCSI+6OIW8eMSDrxK5hb8tThOfhdZEwM3HftQKBgQDFXNFxzAekGC6FrIsKn+A6DJBZJPLc0zPu9KDOW3yPqgR3KHpzawiB0GoE9/3CWx/bEcVa1iOWtDYSQY1Fm5g9n458IwRXTmpWgJ9S9NNRnb9AOydDboNZEXGAf71HcnXhTgRrjBXPk8IGTKnSCiSkile75sBZ2RQSLS+RZtAE1QKBgQCwhFNKraspBjHAGS7fKxW8vbOlqFZyUVft4lk2/jUThtCaSDfx6by50TK+8HJ5UM6pdVlocr4R6YT7CDRkQlGtjljVD40NozUnT1dRKqJYYwQ2phikH2vn7ztq0iyxqEjvRYBFT11JwR+RfZAZ84k4i0O30LQAuYKKfFM+T4LGVQKBgQCQtcbobpZnrkdmQiZM6v7o8U9h3aKpYb7hhcLmq9QALsRJboeiWyeIr30dGYyZ1mDcKwKO4RaFKKvA5QmlsTmGbZh20uIa9ecod/TaSaMsY8LYYMcgPUbXpt+XPZJWccmXIrJA/Rz877VDEzEtTbyiXMGJh98fwfhif3kyXrVF5QKBgQCFrEYVRNyzBgJgs/MtaKURu7dtKQx/reEs4bMWza7l8DDZLSbZFnVH9xX8tIpcKgtDJSwfUytiR/aWe6GVWdKJ1sxU+lvNdlV9qg2uObmM1pHQvgBlrKnEYQFqyeMjcc+3LAR87u1e9yqMeuG5tdvMR39zx50QChP//02ZJdvxmQ==";
+
+    // 支付宝公钥
+    public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkfxIAoLtvhF7WNy7f7qKZmGNc57hkKl5DDNI3cqNwaufUChqkwiAd4UXlAsW5MfgdyUsH0P2RvxP9wbOn++JK3eF2C97K1m3Vn8r67ZGgEwsW3mtzUBqgF9NwCIqohvR1kzZENk5zF4cjg2NWIcRihuQWwD9qVexcMrelOd7rCZFOP1aCx0eOpG60YInNPGweeiqM5HBI6l3wSYfOsYwNTi0cewbuz2WjvPX8IIooi1kR7PVXAUBVyv/VKu2P8SGRXN+kpztkkPBw43TfX+GItNZoDsEIwhskZlukKfKjhaqO373yDtbFjBy49WpsiEO8syyztQ4nTKFOzluyov62QIDAQAB";
+
+    // 服务器异步通知页面路径，部署在公网下的网页；如果只是自己测试，可以不用在公网下，甚至可以不填，如果不填的话记得把下面代码中设置这一项的那一行注释。
+//    public static String notify_url = "";
+
+    // 页面跳转同步通知页面路径，部署在公网下的网页；如果只是自己测试，可以不用在公网下，甚至可以不填，如果不填的话记得把下面代码中设置这一项的那一行注释。
+//    public static String return_url = "";
+
+    // 签名方式
+    public static String sign_type = "RSA2";
+
+    // 字符编码格式
+    public static String charset = "GBK";
+
+}
