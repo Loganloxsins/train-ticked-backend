@@ -1,7 +1,9 @@
 package org.fffd.l23o6.pojo.vo.user;
 
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 public class UserVO {
     private String username;
@@ -9,4 +11,5 @@ public class UserVO {
     private String phone;
     private String idn;
     private String type;
+    private Long mileagePoints;
 }

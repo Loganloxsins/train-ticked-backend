@@ -13,5 +13,6 @@ public interface OrderMapper {
     @Mapping(target = "status", source = "entity.status.text")
     @Mapping(target = "startStationId", source = "entity.departureStationId")
     @Mapping(target = "endStationId", source = "entity.arrivalStationId")
+    @Mapping(target = "price", source = "entity.price")
     OrderVO toOrderVO(OrderEntity entity);
 }

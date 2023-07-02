@@ -7,7 +7,7 @@ import org.fffd.l23o6.pojo.vo.order.OrderVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-02T03:56:49+0800",
+    date = "2023-07-03T00:12:55+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class OrderMapperImpl implements OrderMapper {
@@ -23,6 +23,7 @@ public class OrderMapperImpl implements OrderMapper {
         orderVO.status( entityStatusText( entity ) );
         orderVO.startStationId( entity.getDepartureStationId() );
         orderVO.endStationId( entity.getArrivalStationId() );
+        orderVO.price( entity.getPrice() );
         orderVO.id( entity.getId() );
         orderVO.trainId( entity.getTrainId() );
         orderVO.createdAt( entity.getCreatedAt() );

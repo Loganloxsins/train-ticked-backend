@@ -5,29 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f525e9d5-baaf-4799-89be-b48baf8b040a" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/CreditPaymentStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/WechatPaymentStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/alipay.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/OrderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/OrderMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/CreateOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/CreateOrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/PatchOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/PatchOrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/OrderVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/OrderVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/user/UserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/user/UserVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +148,7 @@
       <workItem from="1688089625200" duration="30021000" />
       <workItem from="1688176771548" duration="14965000" />
       <workItem from="1688198251230" duration="19271000" />
-      <workItem from="1688261466305" duration="10071000" />
+      <workItem from="1688261466305" duration="31060000" />
     </task>
     <servers />
   </component>
