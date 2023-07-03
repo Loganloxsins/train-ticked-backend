@@ -108,14 +108,25 @@ public class OrderServiceImpl implements OrderService {
                 .build();
     }
 
-    public void cancelOrder(Long id,String type) throws ServletException, AlipayApiException, IOException {
+    public void cancelOrder(Long id) throws ServletException, AlipayApiException, IOException {
         OrderEntity order = orderDao.findById(id).get();
 
-        if (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED) {
+        if (order.getStatus() == OrderStatus.CANCELLED) {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
         }
 
         // TODO: refund user's money and credits if needed
+
+        if(order.getStatus() == OrderStatus.COMPLETED ){
+            Integer price=order.getPrice();
+            PaymentService paymentService=new PaymentService();
+            paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+            Long userId=order.getUserId();
+            UserEntity userEntity=userDao.findById(userId).get();
+            userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
+            userDao.save(userEntity);
+        }
+        /**
         Integer price=order.getPrice();
         PaymentService paymentService=new PaymentService();
         switch (type){
@@ -129,10 +140,12 @@ public class OrderServiceImpl implements OrderService {
                 break;
         }
 
+
         Long userId=order.getUserId();
         UserEntity userEntity=userDao.findById(userId).get();
         userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
         userDao.save(userEntity);
+         **/
 
 
         order.setStatus(OrderStatus.CANCELLED);

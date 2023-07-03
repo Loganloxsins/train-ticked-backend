@@ -52,7 +52,7 @@ public class OrderController {
             case PAID:
                 return CommonResponse.success(orderService.payOrder(orderId,request.getType()));
             case CANCELLED:
-                orderService.cancelOrder(orderId, request.getType());
+                orderService.cancelOrder(orderId);
                 break;
             default:
                 throw new BizException(CommonErrorType.ILLEGAL_ARGUMENTS, "Invalid order status.");
@@ -60,6 +60,8 @@ public class OrderController {
 
         return CommonResponse.success();
     }
+
+
 
     @GetMapping("order/usePoints/{orderId}")
     public CommonResponse<Integer> usePoints(@PathVariable("orderId") Long orderId){
