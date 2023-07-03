@@ -108,7 +108,7 @@ public class OrderServiceImpl implements OrderService {
                 .build();
     }
 
-    public void cancelOrder(Long id) {
+    public void cancelOrder(Long id,String type) throws ServletException, AlipayApiException, IOException {
         OrderEntity order = orderDao.findById(id).get();
 
         if (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED) {
@@ -116,6 +116,24 @@ public class OrderServiceImpl implements OrderService {
         }
 
         // TODO: refund user's money and credits if needed
+        Integer price=order.getPrice();
+        PaymentService paymentService=new PaymentService();
+        switch (type){
+            case "支付宝支付":
+                paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+            case "微信支付":
+                //paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price), id);
+                break;
+            case "积分支付":
+                //paymentService.payment(new CreditPaymentStrategy(), BigDecimal.valueOf(price), id);
+                break;
+        }
+
+        Long userId=order.getUserId();
+        UserEntity userEntity=userDao.findById(userId).get();
+        userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
+        userDao.save(userEntity);
+
 
         order.setStatus(OrderStatus.CANCELLED);
         orderDao.save(order);

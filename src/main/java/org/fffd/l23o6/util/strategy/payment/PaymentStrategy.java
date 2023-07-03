@@ -12,4 +12,7 @@ public abstract class PaymentStrategy {
     public String payment(BigDecimal amount, Long id) throws AlipayApiException, ServletException, IOException {
         return null;
     }
+    public String refund(BigDecimal amount, Long id) throws AlipayApiException, ServletException, IOException {
+        return null;
+    }
 }
