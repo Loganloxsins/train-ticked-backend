@@ -35,13 +35,18 @@ public class UserEntity {
 
     private String name;
     private String phone;
-    private String type;
-    private String idn;
-    private Long mileagePoints;
+    private String type;//证件类型
+    private String idn;//身份证号
+    private Long mileagePoints;//里程积分
 
     @CreationTimestamp
     private Date createdAt;
 
     @UpdateTimestamp
     private Date updatedAt;
+
+    //用户是否为会员
+    private Boolean isMember;
+    private String vippassword;
+
 }

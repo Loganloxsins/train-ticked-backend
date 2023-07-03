@@ -9,4 +9,6 @@ public interface UserService {
 
     UserVO findByUserName(String username);
     void editInfo(String username, String name, String idn, String phone, String type);
+
+    void getMembership(String username,String vippassword);
 }

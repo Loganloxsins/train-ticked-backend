@@ -33,6 +33,7 @@ public class OrderController {
         return CommonResponse.success(new OrderIdVO(orderService.createOrder(StpUtil.getLoginIdAsString(), request.getTrainId(), request.getStartStationId(), request.getEndStationId(), request.getSeatType(), null,request.getPrice())));
     }
 
+
     @GetMapping("order")
     public CommonResponse<List<OrderVO>> listOrders(){
         StpUtil.checkLogin();

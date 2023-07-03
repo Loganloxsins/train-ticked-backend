@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.fffd.l23o6.dao.TrainDao;
 
 @Data
 @Schema(description = "创建订单请求")
