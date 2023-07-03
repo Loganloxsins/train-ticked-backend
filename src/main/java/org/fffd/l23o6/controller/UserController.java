@@ -5,10 +5,7 @@ import io.github.lyc8503.spring.starter.incantation.pojo.CommonResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.fffd.l23o6.mapper.UserMapper;
-import org.fffd.l23o6.pojo.vo.user.EditUserInfoRequest;
-import org.fffd.l23o6.pojo.vo.user.LoginRequest;
-import org.fffd.l23o6.pojo.vo.user.RegisterRequest;
-import org.fffd.l23o6.pojo.vo.user.UserVO;
+import org.fffd.l23o6.pojo.vo.user.*;
 import org.fffd.l23o6.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,4 +50,15 @@ public class UserController {
         userService.editInfo(StpUtil.getLoginIdAsString(), request.getName(), request.getIdn(), request.getPhone(), request.getType());
         return CommonResponse.success();
     }
+
+
+
+    @PutMapping("user/vipregister")
+    public CommonResponse<?> registMember(@Valid @RequestBody MembershipRequest request) {
+        StpUtil.checkLogin();
+        userService.getMembership(StpUtil.getLoginIdAsString(),request.getVippassword());
+        return CommonResponse.success();
+    }
+
+
 }

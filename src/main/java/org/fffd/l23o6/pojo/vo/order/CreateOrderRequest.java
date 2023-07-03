@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.fffd.l23o6.dao.TrainDao;
 
 @Data
 @Schema(description = "创建订单请求")
@@ -53,4 +54,8 @@ public class CreateOrderRequest{
     @NotNull
     @Pattern(regexp = "^(([软硬]卧)|([软硬无]座)|([一二]等座)|(商务座))$", message = "座位类型错误")
     private String seatType;
+
+    @Schema(description = "票价", required = true)
+    @NotNull
+    private Integer price;
 }

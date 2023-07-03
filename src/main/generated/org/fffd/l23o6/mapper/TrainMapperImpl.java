@@ -11,7 +11,7 @@ import org.fffd.l23o6.pojo.vo.train.TrainVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-30T00:05:02+0800",
+    date = "2023-07-02T03:56:49+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class TrainMapperImpl implements TrainMapper {

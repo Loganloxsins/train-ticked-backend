@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f525e9d5-baaf-4799-89be-b48baf8b040a" name="Changes" comment="Changes">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -16,6 +17,32 @@
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/TrainMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/TrainMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/CreditPaymentStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/WechatPaymentStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/alipay.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/OrderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/OrderMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/RouteMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/StationMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/TrainMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/OrderEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/CreateOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/CreateOrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/PatchOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/pojo/vo/order/PatchOrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/TrainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/PaymentStrategy.java" afterDir="false" />
+>>>>>>> 321db01823f27709ab8915b1cc5b9d2c4ec7b76a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +94,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -74,8 +102,24 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jyp/IdeaProjects/train-ticket-backend/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7e3b6cba26580d1e81b2a64627cb781e&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+>>>>>>> 321db01823f27709ab8915b1cc5b9d2c4ec7b76a
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\resources" />
       <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6\pojo" />
       <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6" />
       <recent name="C:\Users\jyp\IdeaProjects\train-ticket-backend\src\main\java\org\fffd\l23o6\pojo\vo" />
@@ -127,6 +171,9 @@
       <workItem from="1687934444638" duration="3976000" />
       <workItem from="1687940094695" duration="4507000" />
       <workItem from="1688089625200" duration="30021000" />
+      <workItem from="1688176771548" duration="14965000" />
+      <workItem from="1688198251230" duration="19271000" />
+      <workItem from="1688261466305" duration="10071000" />
     </task>
     <servers />
   </component>

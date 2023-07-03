@@ -1,5 +1,6 @@
 package org.fffd.l23o6.controller;
 
+import com.alipay.api.AlipayApiException;
 import io.github.lyc8503.spring.starter.incantation.exception.BizException;
 import io.github.lyc8503.spring.starter.incantation.exception.CommonErrorType;
 import io.github.lyc8503.spring.starter.incantation.pojo.CommonResponse;
@@ -25,10 +26,11 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("order")
-    public CommonResponse<OrderIdVO> createOrder(@Valid @RequestBody CreateOrderRequest request) {
+    public CommonResponse<OrderIdVO> createOrder(@Valid @RequestBody CreateOrderRequest request) throws AlipayApiException {
         StpUtil.checkLogin();
-        return CommonResponse.success(new OrderIdVO(orderService.createOrder(StpUtil.getLoginIdAsString(), request.getTrainId(), request.getStartStationId(), request.getEndStationId(), request.getSeatType(), null)));
+        return CommonResponse.success(new OrderIdVO(orderService.createOrder(StpUtil.getLoginIdAsString(), request.getTrainId(), request.getStartStationId(), request.getEndStationId(), request.getSeatType(), null,request.getPrice())));
     }
+
 
     @GetMapping("order")
     public CommonResponse<List<OrderVO>> listOrders(){
@@ -42,11 +44,11 @@ public class OrderController {
     }
 
     @PatchMapping("order/{orderId}")
-    public CommonResponse<?> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) {
+    public CommonResponse<?> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException {
 
         switch (request.getStatus()) {
             case PAID:
-                orderService.payOrder(orderId);
+                orderService.payOrder(orderId,request.getType());
                 break;
             case CANCELLED:
                 orderService.cancelOrder(orderId);
@@ -56,5 +58,15 @@ public class OrderController {
         }
 
         return CommonResponse.success();
+    }
+
+    @GetMapping("order/usePoints/{orderId}")
+    public CommonResponse<Integer> usePoints(@PathVariable("orderId") Long orderId){
+        return CommonResponse.success(orderService.usePoints(orderId));
+    }
+
+    @GetMapping("order/cancelUsePoints/{orderId}")
+    public CommonResponse<Integer> cancelUsePoints(@PathVariable("orderId") Long orderId){
+        return CommonResponse.success(orderService.cancelUsePoints(orderId));
     }
 }
