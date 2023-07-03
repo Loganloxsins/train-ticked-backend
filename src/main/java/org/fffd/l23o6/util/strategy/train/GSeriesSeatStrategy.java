@@ -100,6 +100,6 @@ public class GSeriesSeatStrategy extends TrainSeatStrategy {
     }
 
     public boolean[][] initSeatMap(int stationCount) {
-        return new boolean[stationCount - 1][BUSINESS_SEAT_MAP.size() + FIRST_CLASS_SEAT_MAP.size() + SECOND_CLASS_SEAT_MAP.size()];
+        return new boolean[stationCount - 1][BUSINESS_SEAT_MAP.size() + FIRST_CLASS_SEAT_MAP.size() + SECOND_CLASS_SEAT_MAP.size()+30];
     }
 }

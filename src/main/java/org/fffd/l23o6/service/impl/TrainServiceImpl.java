@@ -66,38 +66,77 @@ public class TrainServiceImpl implements TrainService {
                         Date arrivalTime=trainEntity.getArrivalTimes().get(j);
                         trainVO.setDepartureTime(departureTime);
                         trainVO.setArrivalTime(arrivalTime);
-                        float hours= (float) (arrivalTime.getTime() - departureTime.getTime()) /(60 * 60 * 1000);
+                        double hours= (double) (arrivalTime.getTime() - departureTime.getTime()) /(60 * 60 * 1000);
                         List<TicketInfo> ticketInfos=new ArrayList<>();
+                        boolean[][] seats=trainEntity.getSeats();
                         switch (trainEntity.getTrainType()) {
                             case HIGH_SPEED:
+                                int business_seat_num=0,first_class_num=0,second_class_num=0,g_no_seat_num=0;
+                                for (int s = 0; s<seats[0].length;s++) {
+                                    boolean vacant=true;
+                                    for (int k = i; k < j; k++) {
+                                        boolean[] station_seats = seats[k];
+                                        if(station_seats[s]){
+                                            vacant=false;
+                                            break;
+                                        }
+                                    }
+                                    if(vacant){
+                                        if(s<3) business_seat_num++;
+                                        else if(s<15) first_class_num++;
+                                        else if(s<30) second_class_num++;
+                                        else g_no_seat_num++;
+                                    }
+                                }
+
                                 int business_seat_price=(int) Math.round(1.455*hours*SPEED/2);
                                 int first_class_price=(int) Math.round(0.775*hours*SPEED/2);
                                 int second_class_price=(int) Math.round(0.485*hours*SPEED/2);
                                 int g_no_seat_price=(int) Math.round(0.485*hours*SPEED/2);
-                                TicketInfo businessSeat = new TicketInfo("商务座", 3, business_seat_price);
+                                TicketInfo businessSeat = new TicketInfo("商务座", business_seat_num, business_seat_price);
                                 ticketInfos.add(businessSeat);
-                                TicketInfo first_class = new TicketInfo("一等座", 12, first_class_price);
+                                TicketInfo first_class = new TicketInfo("一等座", first_class_num, first_class_price);
                                 ticketInfos.add(first_class);
-                                TicketInfo second_class = new TicketInfo("二等座", 15, second_class_price);
+                                TicketInfo second_class = new TicketInfo("二等座", second_class_num, second_class_price);
                                 ticketInfos.add(second_class);
-                                TicketInfo g_no_seat = new TicketInfo("无座", 30, g_no_seat_price);
+                                TicketInfo g_no_seat = new TicketInfo("无座", g_no_seat_num, g_no_seat_price);
                                 ticketInfos.add(g_no_seat);
                                 break;
                             case NORMAL_SPEED:
+                                int soft_sleeper_num=0,hard_sleeper_num=0,soft_seat_num=0,hard_seat_num=0,k_no_seat_num=0;
+                                for (int s = 0; s<seats[0].length;s++) {
+                                    boolean vacant=true;
+                                    for (int k = i; k < j; k++) {
+                                        boolean[] station_seats = seats[k];
+                                        if(station_seats[s]){
+                                            vacant=false;
+                                            break;
+                                        }
+                                    }
+                                    if(vacant){
+                                        if(s<8) soft_sleeper_num++;
+                                        else if(s<20) hard_sleeper_num++;
+                                        else if(s<36) soft_seat_num++;
+                                        else if(s<56) hard_seat_num++;
+                                        else k_no_seat_num++;
+                                    }
+                                }
+
+
                                 int soft_sleeper_price=(int) Math.round(0.37026*hours*SPEED/4);
                                 int hard_sleeper_price=(int) Math.round(0.30855*hours*SPEED/4);
                                 int soft_seat_price=(int) Math.round(0.2057*hours*SPEED/4);
                                 int hard_seat_price=(int) Math.round(0.1542*hours*SPEED/4);
                                 int k_no_seat_price=(int) Math.round(0.1542*hours*SPEED/4);
-                                TicketInfo soft_sleeper = new TicketInfo("软卧",8,soft_sleeper_price);
+                                TicketInfo soft_sleeper = new TicketInfo("软卧",soft_sleeper_num,soft_sleeper_price);
                                 ticketInfos.add(soft_sleeper);
-                                TicketInfo hard_sleeper = new TicketInfo("硬卧",12,hard_sleeper_price);
+                                TicketInfo hard_sleeper = new TicketInfo("硬卧",hard_sleeper_num,hard_sleeper_price);
                                 ticketInfos.add(hard_sleeper);
-                                TicketInfo soft_seat = new TicketInfo("软座",16,soft_seat_price);
+                                TicketInfo soft_seat = new TicketInfo("软座",soft_seat_num,soft_seat_price);
                                 ticketInfos.add(soft_seat);
-                                TicketInfo hard_seat = new TicketInfo("硬座",20,hard_seat_price);
+                                TicketInfo hard_seat = new TicketInfo("硬座",hard_seat_num,hard_seat_price);
                                 ticketInfos.add(hard_seat);
-                                TicketInfo k_no_seat = new TicketInfo("无座",30,k_no_seat_price);
+                                TicketInfo k_no_seat = new TicketInfo("无座",k_no_seat_num,k_no_seat_price);
                                 ticketInfos.add(k_no_seat);
                                 break;
                             default:

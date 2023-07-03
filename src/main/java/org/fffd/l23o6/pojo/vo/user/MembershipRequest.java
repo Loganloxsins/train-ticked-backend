@@ -11,10 +11,9 @@ import lombok.Data;
 public class MembershipRequest {
     @Schema(description = "密码", required = true)
     @NotNull
-    @Size(min = 8, max = 56, message = "密码长度必须在 8-56 之间")
+    @Size(min = 6, max = 6, message = "密码长度必须为6位")
     @Pattern.List({
-            @Pattern(regexp = "^[\\x21-\\x7e]*$", message = "密码只能包含字母,数字和符号"),
-            @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "密码未达到复杂性要求:密码必须包含大小写字母和数字")
+            @Pattern(regexp = "^[0-9]*$", message = "密码只能包含数字")
     })
     private String vippassword;
 }
