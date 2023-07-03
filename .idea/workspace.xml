@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5320a2b-39a5-44dc-95de-bbe089c2f0e4" name="变更" comment="refund not finished">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/generated/org/fffd/l23o6/mapper/UserMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/mapper/UserMapper.java" afterDir="false" />
@@ -25,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/util/strategy/payment/AlipayPaymentStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
 
+>>>>>>> refs/remotes/origin/main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

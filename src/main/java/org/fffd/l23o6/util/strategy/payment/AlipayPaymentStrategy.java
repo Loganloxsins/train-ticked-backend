@@ -1,5 +1,6 @@
 package org.fffd.l23o6.util.strategy.payment;
 
+
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
@@ -71,7 +72,7 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         alipayRequest.setReturnUrl("http://localhost:5173/user");
 
         /** 异步通知地址，以http或者https开头的，商户外网可以post访问的异步地址，用于接收支付宝返回的支付结果，如果未收到该通知可参考该文档进行确认：https://opensupport.alipay.com/support/helpcenter/193/201602475759 **/
-        alipayRequest.setNotifyUrl("");
+        alipayRequest.setNotifyUrl("http://localhost:5173/user");
 
         /**第三方调用（服务商模式），传值app_auth_token后，会收款至授权app_auth_token对应商家账号，如何获传值app_auth_token请参考文档：https://opensupport.alipay.com/support/helpcenter/79/201602494631 **/
         //alipayRequest.putOtherTextParam("app_auth_token", "传入获取到的app_auth_token值");
@@ -112,7 +113,9 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
     }
 
 
-    public String refund(BigDecimal amount, Long id) throws ServletException, IOException {
+    public String refund(BigDecimal amount, Long id) {
+        //TODO 判断时间
+
 
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
         String APP_ID = "9021000122698301";
@@ -120,11 +123,9 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         String ALIPAY_PUBLIC_KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkfxIAoLtvhF7WNy7f7qKZmGNc57hkKl5DDNI3cqNwaufUChqkwiAd4UXlAsW5MfgdyUsH0P2RvxP9wbOn++JK3eF2C97K1m3Vn8r67ZGgEwsW3mtzUBqgF9NwCIqohvR1kzZENk5zF4cjg2NWIcRihuQWwD9qVexcMrelOd7rCZFOP1aCx0eOpG60YInNPGweeiqM5HBI6l3wSYfOsYwNTi0cewbuz2WjvPX8IIooi1kR7PVXAUBVyv/VKu2P8SGRXN+kpztkkPBw43TfX+GItNZoDsEIwhskZlukKfKjhaqO373yDtbFjBy49WpsiEO8syyztQ4nTKFOzluyov62QIDAQAB";
         AlipayClient alipayClient = new DefaultAlipayClient(URL,APP_ID,APP_PRIVATE_KEY,"json","UTF-8",ALIPAY_PUBLIC_KEY,"RSA2");
 
-
-
         // 构建退款请求对象
         AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
-        request.setBizContent("{\"out_trade_no\":\"" + id + "\",\"refund_amount\":\"" + amount + "\"}");
+        request.setBizContent("{\"trade_no\":\"" + generateCode() + id + "\",\"out_trade_no\":\"" + generateCode() + id + "\",\"refund_amount\":\"" + amount + "\"}");
 
         // 调用退款接口
         AlipayTradeRefundResponse response;
