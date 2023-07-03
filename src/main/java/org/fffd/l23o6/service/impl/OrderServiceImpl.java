@@ -64,8 +64,8 @@ public class OrderServiceImpl implements OrderService {
                 .status(OrderStatus.PENDING_PAYMENT).arrivalStationId(toStationId).departureStationId(fromStationId)
                 .price(price).discount(0).build();
         train.setUpdatedAt(null);// force it to update
-        PaymentService paymentService=new PaymentService();
-        paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
+        //PaymentService paymentService=new PaymentService();
+        //paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
         trainDao.save(train);
         orderDao.save(order);
         return order.getId();
@@ -132,12 +132,12 @@ public class OrderServiceImpl implements OrderService {
         PaymentService paymentService=new PaymentService();
         switch (type){
             case "支付宝支付":
-                return paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
+                return paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
             case "微信支付":
-                paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price));
+                paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price), id);
                 break;
             case "积分支付":
-                paymentService.payment(new CreditPaymentStrategy(), BigDecimal.valueOf(price));
+                paymentService.payment(new CreditPaymentStrategy(), BigDecimal.valueOf(price), id);
                 break;
         }
 
