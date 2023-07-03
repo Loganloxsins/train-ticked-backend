@@ -45,12 +45,11 @@ public class OrderController {
     }
 
     @PatchMapping("order/{orderId}")
-    public CommonResponse<?> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException, ServletException, IOException {
+    public CommonResponse<String> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException, ServletException, IOException {
 
         switch (request.getStatus()) {
             case PAID:
-                orderService.payOrder(orderId,request.getType());
-                break;
+                return CommonResponse.success(orderService.payOrder(orderId,request.getType()));
             case CANCELLED:
                 orderService.cancelOrder(orderId);
                 break;

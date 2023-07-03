@@ -121,7 +121,7 @@ public class OrderServiceImpl implements OrderService {
         orderDao.save(order);
     }
 
-    public void payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {
+    public String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {
         OrderEntity order = orderDao.findById(id).get();
         Integer price=order.getPrice();
 
@@ -132,8 +132,7 @@ public class OrderServiceImpl implements OrderService {
         PaymentService paymentService=new PaymentService();
         switch (type){
             case "支付宝支付":
-                paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
-                break;
+                return paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
             case "微信支付":
                 paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price));
                 break;
@@ -149,6 +148,7 @@ public class OrderServiceImpl implements OrderService {
 
         order.setStatus(OrderStatus.COMPLETED);
         orderDao.save(order);
+        return null;
     }
 
     public Integer cancelUsePoints(Long orderId){

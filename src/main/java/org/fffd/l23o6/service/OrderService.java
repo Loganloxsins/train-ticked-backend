@@ -13,7 +13,7 @@ public interface OrderService {
     OrderVO getOrder(Long id);
 
     void cancelOrder(Long id);
-    void payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException;
+    String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException;
     Integer usePoints(Long orderId);
     Integer cancelUsePoints(Long orderId);
 }

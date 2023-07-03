@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class PaymentService {
-    public void payment(PaymentStrategy strategy, BigDecimal amount) throws AlipayApiException, ServletException, IOException {
-        strategy.payment(amount);
+    public String payment(PaymentStrategy strategy, BigDecimal amount) throws AlipayApiException, ServletException, IOException {
+        return strategy.payment(amount);
     }
 }

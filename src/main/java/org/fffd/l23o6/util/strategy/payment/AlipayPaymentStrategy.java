@@ -16,11 +16,11 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 
     public String payment(BigDecimal amount) throws ServletException, IOException {
         System.out.println("使用支付宝支付"+amount);
-        doPost();
-        return doPost();
+        doPost(amount);
+        return doPost(amount);
     }
 
-    public String doPost(){
+    public String doPost(BigDecimal amount){
         /** 支付宝网关 **/
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
 
@@ -52,7 +52,7 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         model.setSubject("xxx");
 
         /** 订单金额，精确到小数点后两位 **/
-        model.setTotalAmount("0.01");
+        model.setTotalAmount(amount.toString());
 
         /** 订单描述 **/
         model.setBody("pay for ticket");
