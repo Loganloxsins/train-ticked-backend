@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.fffd.l23o6.dao.UserDao;
 import org.fffd.l23o6.exception.BizError;
 import org.fffd.l23o6.pojo.entity.UserEntity;
+import org.fffd.l23o6.pojo.vo.user.UserVO;
 import org.fffd.l23o6.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +29,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity findByUserName(String username) {
-        return userDao.findByUsername(username);
+    public UserVO findByUserName(String username) {
+        UserEntity user=userDao.findByUsername(username);
+        return UserVO.builder()
+                .username(user.getUsername())
+                .name(user.getName())
+                .phone(user.getPhone())
+                .idn(user.getIdn())
+                .type(user.getType())
+                .mileagePoints(user.getMileagePoints())
+                .build();
     }
 
     @Override

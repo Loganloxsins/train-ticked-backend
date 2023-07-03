@@ -4,9 +4,11 @@ import com.alipay.api.AlipayApiException;
 import io.github.lyc8503.spring.starter.incantation.exception.BizException;
 import io.github.lyc8503.spring.starter.incantation.exception.CommonErrorType;
 import io.github.lyc8503.spring.starter.incantation.pojo.CommonResponse;
+import jakarta.servlet.ServletException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.fffd.l23o6.pojo.vo.order.CreateOrderRequest;
@@ -26,7 +28,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("order")
-    public CommonResponse<OrderIdVO> createOrder(@Valid @RequestBody CreateOrderRequest request) throws AlipayApiException {
+    public CommonResponse<OrderIdVO> createOrder(@Valid @RequestBody CreateOrderRequest request) throws AlipayApiException, ServletException, IOException {
         StpUtil.checkLogin();
         return CommonResponse.success(new OrderIdVO(orderService.createOrder(StpUtil.getLoginIdAsString(), request.getTrainId(), request.getStartStationId(), request.getEndStationId(), request.getSeatType(), null,request.getPrice())));
     }
@@ -44,7 +46,7 @@ public class OrderController {
     }
 
     @PatchMapping("order/{orderId}")
-    public CommonResponse<?> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException {
+    public CommonResponse<?> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException, ServletException, IOException {
 
         switch (request.getStatus()) {
             case PAID:

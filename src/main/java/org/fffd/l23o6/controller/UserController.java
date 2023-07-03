@@ -41,7 +41,7 @@ public class UserController {
     @GetMapping("user")
     public CommonResponse<UserVO> userInfo() {
         StpUtil.checkLogin();
-        return CommonResponse.success(UserMapper.INSTANCE.toUserVO(userService.findByUserName(String.valueOf(StpUtil.getLoginId()))));
+        return CommonResponse.success(userService.findByUserName(String.valueOf(StpUtil.getLoginId())));
     }
 
     @PutMapping("user")

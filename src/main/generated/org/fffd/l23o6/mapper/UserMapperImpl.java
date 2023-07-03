@@ -6,7 +6,7 @@ import org.fffd.l23o6.pojo.vo.user.UserVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-02T03:56:49+0800",
+    date = "2023-07-02T23:23:32+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
@@ -19,6 +19,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserVO userVO = new UserVO();
 
+        userVO.setMileagePoints( userEntity.getMileagePoints() );
         userVO.setUsername( userEntity.getUsername() );
         userVO.setName( userEntity.getName() );
         userVO.setPhone( userEntity.getPhone() );

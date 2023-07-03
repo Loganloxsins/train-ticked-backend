@@ -1,11 +1,13 @@
 package org.fffd.l23o6.service.impl;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.alipay.api.AlipayApiException;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.servlet.ServletException;
 import org.fffd.l23o6.dao.OrderDao;
 import org.fffd.l23o6.dao.RouteDao;
 import org.fffd.l23o6.dao.TrainDao;
@@ -38,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
     private final RouteDao routeDao;
 
     public Long createOrder(String username, Long trainId, Long fromStationId, Long toStationId, String seatType,
-            Long seatNumber, Integer price){
+            Long seatNumber,Integer price) throws AlipayApiException, ServletException, IOException {
         Long userId = userDao.findByUsername(username).getId();
         TrainEntity train = trainDao.findById(trainId).get();
         RouteEntity route = routeDao.findById(train.getRouteId()).get();
@@ -62,6 +64,8 @@ public class OrderServiceImpl implements OrderService {
                 .status(OrderStatus.PENDING_PAYMENT).arrivalStationId(toStationId).departureStationId(fromStationId)
                 .price(price).discount(0).build();
         train.setUpdatedAt(null);// force it to update
+        PaymentService paymentService=new PaymentService();
+        paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price));
         trainDao.save(train);
         orderDao.save(order);
         return order.getId();
@@ -100,29 +104,24 @@ public class OrderServiceImpl implements OrderService {
                 .endStationId(order.getArrivalStationId())
                 .departureTime(train.getDepartureTimes().get(startIndex))
                 .arrivalTime(train.getArrivalTimes().get(endIndex))
+                .price(order.getPrice())
                 .build();
     }
 
     public void cancelOrder(Long id) {
         OrderEntity order = orderDao.findById(id).get();
-        Integer price=order.getPrice();
 
         if (order.getStatus() == OrderStatus.COMPLETED || order.getStatus() == OrderStatus.CANCELLED) {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
         }
 
         // TODO: refund user's money and credits if needed
-        Long userId=order.getUserId();
-        UserEntity userEntity=userDao.findById(userId).get();
-        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
-        userDao.save(userEntity);
-
 
         order.setStatus(OrderStatus.CANCELLED);
         orderDao.save(order);
     }
 
-    public void payOrder(Long id, String type) throws AlipayApiException {
+    public void payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {
         OrderEntity order = orderDao.findById(id).get();
         Integer price=order.getPrice();
 
@@ -154,7 +153,11 @@ public class OrderServiceImpl implements OrderService {
 
     public Integer cancelUsePoints(Long orderId){
         OrderEntity orderEntity=orderDao.findById(orderId).get();
-        return orderEntity.getPrice()+orderEntity.getDiscount();
+        int newPrice=orderEntity.getPrice()+orderEntity.getDiscount();
+        orderEntity.setPrice(newPrice);
+        orderEntity.setDiscount(0);
+        orderDao.save(orderEntity);
+        return newPrice;
     }
 
     public Integer usePoints(Long orderId){
@@ -163,7 +166,6 @@ public class OrderServiceImpl implements OrderService {
         int price= orderEntity.getPrice();
         UserEntity userEntity=userDao.findById(userId).get();
         Long points=userEntity.getMileagePoints();
-
         int discount=pointsToDiscount(points);
         int newPrice;
         if(price>=discount){
@@ -185,7 +187,7 @@ public class OrderServiceImpl implements OrderService {
         double[] fixedDiscount={118,18,4,1,0};
         for(int i=0;i< fixedDiscount.length;i++){
             if(discount>fixedDiscount[i]){
-                double points=(discount-fixedDiscount[i])/discountRate[i]+creditArray[i];
+                double points=(discount-fixedDiscount[i])/(discountRate[i]*0.01)+creditArray[i];
                 return Math.round(points);
             }
         }
@@ -198,7 +200,7 @@ public class OrderServiceImpl implements OrderService {
         double[] fixedDiscount={118,18,4,1,0};
         for(int i=0;i<creditArray.length;i++){
             if(points>creditArray[i]){
-                double discount=fixedDiscount[i]+(points-creditArray[i])*discountRate[i];
+                double discount=fixedDiscount[i]+(points-creditArray[i])*discountRate[i]*0.01;
                 return (int)Math.round(discount);
             }
         }
