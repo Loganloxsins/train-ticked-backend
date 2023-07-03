@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 @Component
 public class AlipayPaymentStrategy extends PaymentStrategy{
 
-    public String payment(BigDecimal amount) throws ServletException, IOException {
+    public String payment(BigDecimal amount, Long id) throws ServletException, IOException {
         System.out.println("使用支付宝支付"+amount);
-        doPost(amount);
-        return doPost(amount);
+        doPost(amount,id);
+        return doPost(amount,id);
     }
 
-    public String doPost(BigDecimal amount){
+    public String doPost(BigDecimal amount,Long id){
         /** 支付宝网关 **/
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
 
@@ -42,8 +42,10 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         /** 设置业务参数  **/
         AlipayTradePagePayModel model = new AlipayTradePagePayModel();
 
+        //TODO：订单号（finished）
         /** 商户订单号,商户自定义，需保证在商户端不重复，如：20200612000001 **/
-        model.setOutTradeNo("20200612000001");
+        //model.setOutTradeNo("20200612000003");
+        model.setOutTradeNo(id.toString());
 
         /** 销售产品码,固定值：FAST_INSTANT_TRADE_PAY **/
         model.setProductCode("FAST_INSTANT_TRADE_PAY");

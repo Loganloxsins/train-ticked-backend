@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public abstract class PaymentStrategy {
 
     // TODO: implement this by adding necessary methods and implement specified strategy
-    public String payment(BigDecimal amount) throws AlipayApiException, ServletException, IOException {
+    public String payment(BigDecimal amount, Long id) throws AlipayApiException, ServletException, IOException {
         return null;
     }
 }
