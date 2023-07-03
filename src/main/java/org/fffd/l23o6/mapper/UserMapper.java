@@ -10,7 +10,5 @@ import org.mapstruct.factory.Mappers;
 public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
-
-    @Mapping(target = "mileagePoints", source = "userEntity.mileagePoints")
     UserVO toUserVO(UserEntity userEntity);
 }

@@ -6,7 +6,7 @@ import org.fffd.l23o6.pojo.vo.user.UserVO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-07-02T23:23:32+0800",
+    date = "2023-07-03T21:57:56+0800",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.6 (Oracle Corporation)"
 )
 public class UserMapperImpl implements UserMapper {
@@ -17,15 +17,18 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        UserVO userVO = new UserVO();
+        UserVO.UserVOBuilder userVO = UserVO.builder();
 
-        userVO.setMileagePoints( userEntity.getMileagePoints() );
-        userVO.setUsername( userEntity.getUsername() );
-        userVO.setName( userEntity.getName() );
-        userVO.setPhone( userEntity.getPhone() );
-        userVO.setIdn( userEntity.getIdn() );
-        userVO.setType( userEntity.getType() );
+        userVO.username( userEntity.getUsername() );
+        userVO.name( userEntity.getName() );
+        userVO.phone( userEntity.getPhone() );
+        userVO.idn( userEntity.getIdn() );
+        userVO.type( userEntity.getType() );
+        userVO.mileagePoints( userEntity.getMileagePoints() );
+        if ( userEntity.getIsMember() != null ) {
+            userVO.isMember( userEntity.getIsMember() );
+        }
 
-        return userVO;
+        return userVO.build();
     }
 }

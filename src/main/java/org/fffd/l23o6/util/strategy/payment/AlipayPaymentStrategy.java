@@ -12,9 +12,11 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Random;
 
 @Component
 public class AlipayPaymentStrategy extends PaymentStrategy{
+
 
     public String payment(BigDecimal amount, Long id) throws ServletException, IOException {
         System.out.println("使用支付宝支付"+amount);
@@ -47,13 +49,13 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         //TODO：订单号（finished）
         /** 商户订单号,商户自定义，需保证在商户端不重复，如：20200612000001 **/
         //model.setOutTradeNo("20200612000003");
-        model.setOutTradeNo(id.toString());
+        model.setOutTradeNo(generateCode()+id);
 
         /** 销售产品码,固定值：FAST_INSTANT_TRADE_PAY **/
         model.setProductCode("FAST_INSTANT_TRADE_PAY");
 
         /** 订单标题 **/
-        model.setSubject("xxx");
+        model.setSubject("ticket order");
 
         /** 订单金额，精确到小数点后两位 **/
         model.setTotalAmount(amount.toString());
@@ -91,11 +93,22 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 //            /** 获取接口调用结果，如果调用失败，可根据返回错误信息到该文档寻找排查方案：https://opensupport.alipay.com/support/helpcenter/93 **/
         System.out.println(form);
         return form;
-//            response.setContentType("text/html;charset=" + "utf-8");
-//
-//            /** 直接将完整的表单html输出到页面 **/
-//            response.getWriter().write(form);
-//            response.getWriter().flush();
+    }
+
+    private String generateCode(){
+        Random random = new Random(System.currentTimeMillis());
+        StringBuilder code=new StringBuilder();
+        int count=0;
+        int x;
+        while(count<11){
+            x= random.nextInt(130);
+            while(!((x>=48&&x<=57)||(x>=65&&x<=90)||(x>=97&&x<=122))){
+                x=random.nextInt(130);
+            }
+            code.append((char)x);
+            count++;
+        }
+        return code.toString();
     }
 
 

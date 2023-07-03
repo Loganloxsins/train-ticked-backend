@@ -12,4 +12,5 @@ public class UserVO {
     private String idn;
     private String type;
     private Long mileagePoints;
+    private boolean isMember;
 }

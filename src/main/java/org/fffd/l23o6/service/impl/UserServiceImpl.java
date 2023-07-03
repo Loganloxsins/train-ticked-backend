@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
                 .idn(user.getIdn())
                 .type(user.getType())
                 .mileagePoints(user.getMileagePoints())
+                .isMember(user.getIsMember())
                 .build();
     }
 
