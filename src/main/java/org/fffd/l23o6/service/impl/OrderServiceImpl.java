@@ -120,10 +120,10 @@ public class OrderServiceImpl implements OrderService {
         if(order.getStatus() == OrderStatus.COMPLETED ){
             Integer price=order.getPrice();
             PaymentService paymentService=new PaymentService();
-            paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+            paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price*0.6), id);
             Long userId=order.getUserId();
             UserEntity userEntity=userDao.findById(userId).get();
-            userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
+//            userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
             userDao.save(userEntity);
         }
         /**
@@ -147,7 +147,6 @@ public class OrderServiceImpl implements OrderService {
         userDao.save(userEntity);
          **/
 
-
         order.setStatus(OrderStatus.CANCELLED);
         orderDao.save(order);
     }
@@ -161,6 +160,13 @@ public class OrderServiceImpl implements OrderService {
         }
 
         PaymentService paymentService=new PaymentService();
+        Long userId=order.getUserId();
+        UserEntity userEntity=userDao.findById(userId).get();
+//        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
+        userDao.save(userEntity);
+
+        order.setStatus(OrderStatus.COMPLETED);
+        orderDao.save(order);
         switch (type){
             case "支付宝支付":
                 return paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
@@ -172,13 +178,13 @@ public class OrderServiceImpl implements OrderService {
                 break;
         }
 
-        Long userId=order.getUserId();
-        UserEntity userEntity=userDao.findById(userId).get();
-        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
-        userDao.save(userEntity);
-
-        order.setStatus(OrderStatus.COMPLETED);
-        orderDao.save(order);
+//        Long userId=order.getUserId();
+//        UserEntity userEntity=userDao.findById(userId).get();
+//        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
+//        userDao.save(userEntity);
+//
+//        order.setStatus(OrderStatus.COMPLETED);
+//        orderDao.save(order);
         return null;
     }
 
