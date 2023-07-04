@@ -55,4 +55,8 @@ public class RegisterRequest {
             @Pattern(regexp = "^身份证|护照|其他$", message = "证件类型错误"),
     })
     private String type;
+
+    @Schema(description = "身份", required = true)
+    @NotNull
+    private String role;
 }

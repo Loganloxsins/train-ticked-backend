@@ -17,15 +17,21 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 
     @Override
-    public void register(String username, String password, String name, String idn, String phone, String type) {
+    public void register(String username, String password, String name, String idn, String phone, String type, String role) {
         UserEntity user = userDao.findByUsername(username);
 
         if (user != null) {
             throw new BizException(BizError.USERNAME_EXISTS);
         }
 
-        userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
-                .name(name).idn(idn).phone(phone).type(type).isMember(false).build());
+        if(role.equals("passenger")) {
+            userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
+                    .name(name).idn(idn).phone(phone).type(type).mileagePoints(0L).isMember(false).role(role).build());
+        }
+        else {
+            userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
+                    .name(name).idn(idn).phone(phone).type(type).role(role).build());
+        }
     }
 
     @Override
@@ -39,6 +45,7 @@ public class UserServiceImpl implements UserService {
                 .type(user.getType())
                 .mileagePoints(user.getMileagePoints())
                 .isMember(user.getIsMember())
+                .role(user.getRole())
                 .build();
     }
 

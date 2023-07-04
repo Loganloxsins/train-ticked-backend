@@ -37,6 +37,7 @@ public class UserEntity {
     private String phone;
     private String type;//证件类型
     private String idn;//身份证号
+    private String role;
     private Long mileagePoints;//里程积分
 
     @CreationTimestamp
