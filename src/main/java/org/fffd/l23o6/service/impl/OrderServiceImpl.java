@@ -115,7 +115,7 @@ public class OrderServiceImpl implements OrderService {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
         }
 
-        // TODO: refund user's money and credits if needed
+        // TODO(solved): refund user's money and credits if needed
 
         if(order.getStatus() == OrderStatus.COMPLETED ){
             Integer price=order.getPrice();
@@ -123,7 +123,7 @@ public class OrderServiceImpl implements OrderService {
             paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price*0.6), id);
             Long userId=order.getUserId();
             UserEntity userEntity=userDao.findById(userId).get();
-//            userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
+            userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())-price*5L);
             userDao.save(userEntity);
         }
         /**
@@ -159,17 +159,18 @@ public class OrderServiceImpl implements OrderService {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
         }
 
+        //TODO:支付完再更新
         PaymentService paymentService=new PaymentService();
-        Long userId=order.getUserId();
-        UserEntity userEntity=userDao.findById(userId).get();
-//        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
-        userDao.save(userEntity);
-
-        order.setStatus(OrderStatus.COMPLETED);
-        orderDao.save(order);
         switch (type){
             case "支付宝支付":
-                return paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+                String pay = paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+                Long userId=order.getUserId();
+                UserEntity userEntity=userDao.findById(userId).get();
+                userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
+                userDao.save(userEntity);
+                order.setStatus(OrderStatus.COMPLETED);
+                orderDao.save(order);
+                return pay;
             case "微信支付":
                 paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price), id);
                 break;
@@ -178,13 +179,6 @@ public class OrderServiceImpl implements OrderService {
                 break;
         }
 
-//        Long userId=order.getUserId();
-//        UserEntity userEntity=userDao.findById(userId).get();
-//        userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
-//        userDao.save(userEntity);
-//
-//        order.setStatus(OrderStatus.COMPLETED);
-//        orderDao.save(order);
         return null;
     }
 
