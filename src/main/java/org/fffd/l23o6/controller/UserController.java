@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping("session")
     public CommonResponse<?> login(@Valid @RequestBody LoginRequest request) {
         // Throws BizException if auth failed.
-        userService.login(request.getUsername(), request.getPassword());
+        userService.login(request.getUsername(), request.getPassword(), request.getRole());
 
         StpUtil.login(request.getUsername());
         return CommonResponse.success();

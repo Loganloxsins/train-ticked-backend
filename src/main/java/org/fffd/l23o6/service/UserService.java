@@ -4,7 +4,7 @@ import org.fffd.l23o6.pojo.entity.UserEntity;
 import org.fffd.l23o6.pojo.vo.user.UserVO;
 
 public interface UserService {
-    void login(String username, String password);
+    void login(String username, String password, String role);
     void register(String username, String password, String name, String idn, String phone, String type,String role);
 
     UserVO findByUserName(String username);

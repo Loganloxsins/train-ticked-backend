@@ -24,4 +24,8 @@ public class LoginRequest {
             @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "密码未达到复杂性要求:密码必须包含大小写字母和数字")
     })
     private String password;
+
+    @Schema(description = "身份", required = true)
+    @NotNull
+    private String role;
 }
