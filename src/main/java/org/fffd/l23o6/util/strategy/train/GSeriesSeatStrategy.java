@@ -41,6 +41,19 @@ public class GSeriesSeatStrategy extends TrainSeatStrategy {
 
     }
 
+    public Integer findSeatNumberByInfo(String seatInfo) {
+        for (Map<Integer, String> seatMap : TYPE_MAP.values()) {
+            for (Map.Entry<Integer, String> entry : seatMap.entrySet()) {
+                if (entry.getValue().equals(seatInfo)) {
+                    return entry.getKey();
+                }
+            }
+        }
+        return null;
+    }
+
+
+
     public enum GSeriesSeatType implements SeatType {
         BUSINESS_SEAT("商务座"), FIRST_CLASS_SEAT("一等座"), SECOND_CLASS_SEAT("二等座"), NO_SEAT("无座");
         private String text;
@@ -94,7 +107,7 @@ public class GSeriesSeatStrategy extends TrainSeatStrategy {
     }
 
     public Map<GSeriesSeatType, Integer> getLeftSeatCount(int startStationIndex, int endStationIndex, boolean[][] seatMap) {
-        // TODO
+        // TODO（solved in listTrains）
         return null;
     }
 

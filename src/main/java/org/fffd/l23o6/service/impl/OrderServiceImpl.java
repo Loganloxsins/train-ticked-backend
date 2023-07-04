@@ -109,7 +109,29 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void cancelOrder(Long id) throws ServletException, AlipayApiException, IOException {
+        //TODO: add seats after cancel order
         OrderEntity order = orderDao.findById(id).get();
+        TrainEntity train = trainDao.findById(order.getTrainId()).get();
+        RouteEntity route = routeDao.findById(train.getRouteId()).get();
+        int startStationIndex = route.getStationIds().indexOf(order.getDepartureStationId());
+        int endStationIndex = route.getStationIds().indexOf(order.getArrivalStationId());
+        String seat = order.getSeat();
+
+        int seatNumber = -1;
+        switch (train.getTrainType()) {
+            case HIGH_SPEED:
+                seatNumber = GSeriesSeatStrategy.INSTANCE.findSeatNumberByInfo(seat);
+                break;
+            case NORMAL_SPEED:
+                seatNumber = KSeriesSeatStrategy.INSTANCE.findSeatNumberByInfo(seat);
+                break;
+        }
+
+        boolean[][] seatMap = train.getSeats();
+        for (int i = startStationIndex; i < endStationIndex; i++) {
+            boolean[] seats = seatMap[i];
+            seats[seatNumber] = false;
+        }
 
         if (order.getStatus() == OrderStatus.CANCELLED) {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
@@ -139,8 +161,6 @@ public class OrderServiceImpl implements OrderService {
                 //paymentService.payment(new CreditPaymentStrategy(), BigDecimal.valueOf(price), id);
                 break;
         }
-
-
         Long userId=order.getUserId();
         UserEntity userEntity=userDao.findById(userId).get();
         userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
@@ -164,12 +184,14 @@ public class OrderServiceImpl implements OrderService {
         switch (type){
             case "支付宝支付":
                 String pay = paymentService.payment(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
+
                 Long userId=order.getUserId();
                 UserEntity userEntity=userDao.findById(userId).get();
                 userEntity.setMileagePoints(userEntity.getMileagePoints()-discountToPoints(order.getDiscount())+price*5L);
                 userDao.save(userEntity);
                 order.setStatus(OrderStatus.COMPLETED);
                 orderDao.save(order);
+
                 return pay;
             case "微信支付":
                 paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price), id);
@@ -236,6 +258,18 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         return 0;
+    }
+
+    public void updateOrderAfterPaymentSuccess(Long orderId) {
+        // 获取订单信息
+        OrderEntity order = orderDao.findById(orderId).get();
+        Integer price = order.getPrice();
+        Long userId = order.getUserId();
+        UserEntity userEntity = userDao.findById(userId).get();
+        userEntity.setMileagePoints(userEntity.getMileagePoints() - discountToPoints(order.getDiscount()) + price * 5L);
+        userDao.save(userEntity);
+        order.setStatus(OrderStatus.COMPLETED);
+        orderDao.save(order);
     }
 
 }

@@ -9,13 +9,8 @@ import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 import jakarta.servlet.ServletException;
-import lombok.RequiredArgsConstructor;
-import org.fffd.l23o6.dao.OrderDao;
-import org.fffd.l23o6.dao.UserDao;
-import org.fffd.l23o6.pojo.entity.OrderEntity;
-import org.fffd.l23o6.pojo.entity.UserEntity;
-import org.fffd.l23o6.pojo.enum_.OrderStatus;
 import org.springframework.stereotype.Component;
+
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -77,7 +72,7 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         alipayRequest.setReturnUrl("http://localhost:5173/user");
 
         /** 异步通知地址，以http或者https开头的，商户外网可以post访问的异步地址，用于接收支付宝返回的支付结果，如果未收到该通知可参考该文档进行确认：https://opensupport.alipay.com/support/helpcenter/193/201602475759 **/
-        alipayRequest.setNotifyUrl("http://localhost:5173/user");
+        alipayRequest.setNotifyUrl("http://localhost:5173/notify");
 
         /**第三方调用（服务商模式），传值app_auth_token后，会收款至授权app_auth_token对应商家账号，如何获传值app_auth_token请参考文档：https://opensupport.alipay.com/support/helpcenter/79/201602494631 **/
         //alipayRequest.putOtherTextParam("app_auth_token", "传入获取到的app_auth_token值");
@@ -151,6 +146,10 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
             return "退款失败";
         }
     }
+
+
+
+
 
 
 }
