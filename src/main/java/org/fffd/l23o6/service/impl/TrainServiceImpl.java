@@ -89,6 +89,8 @@ public class TrainServiceImpl implements TrainService {
                                     }
                                 }
 
+                                if(!(business_seat_num==0&&first_class_num==0&&second_class_num==0)) g_no_seat_num=0;
+
                                 int business_seat_price=(int) Math.round(1.455*hours*SPEED/2);
                                 int first_class_price=(int) Math.round(0.775*hours*SPEED/2);
                                 int second_class_price=(int) Math.round(0.485*hours*SPEED/2);
@@ -121,6 +123,8 @@ public class TrainServiceImpl implements TrainService {
                                         else k_no_seat_num++;
                                     }
                                 }
+
+                                if(!(soft_sleeper_num==0&&hard_sleeper_num==0&&soft_seat_num==0&&hard_seat_num==0)) k_no_seat_num=0;
 
 
                                 int soft_sleeper_price=(int) Math.round(0.37026*hours*SPEED/4);
