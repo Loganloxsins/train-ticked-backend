@@ -159,6 +159,7 @@ public class OrderServiceImpl implements OrderService {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
         }
 
+        //TODO:支付完再更新
         PaymentService paymentService=new PaymentService();
         Long userId=order.getUserId();
         UserEntity userEntity=userDao.findById(userId).get();

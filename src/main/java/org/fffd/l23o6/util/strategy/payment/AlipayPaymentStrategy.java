@@ -26,6 +26,7 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
     }
 
     public String doPost(BigDecimal amount,Long id){
+        //System.out.println(id);
         /** 支付宝网关 **/
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
 
@@ -49,8 +50,8 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 
         //TODO：订单号（finished）
         /** 商户订单号,商户自定义，需保证在商户端不重复，如：20200612000001 **/
-        //model.setOutTradeNo("20200612000003");
-        model.setOutTradeNo(generateCode()+id);
+        //model.setOutTradeNo("20200612000032");
+        model.setOutTradeNo(id.toString());
 
         /** 销售产品码,固定值：FAST_INSTANT_TRADE_PAY **/
         model.setProductCode("FAST_INSTANT_TRADE_PAY");
@@ -115,7 +116,7 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 
     public String refund(BigDecimal amount, Long id) {
         //TODO 判断时间
-
+        //System.out.println(id);
 
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
         String APP_ID = "9021000122698301";
@@ -125,7 +126,8 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 
         // 构建退款请求对象
         AlipayTradeRefundRequest request = new AlipayTradeRefundRequest();
-        request.setBizContent("{\"trade_no\":\"" + generateCode() + id + "\",\"out_trade_no\":\"" + generateCode() + id + "\",\"refund_amount\":\"" + amount + "\"}");
+        //request.setBizContent("{\"trade_no\":\"" + generateCode() + id + "\",\"out_trade_no\":\"" + generateCode() + id + "\",\"refund_amount\":\"" + amount + "\"}");
+        request.setBizContent("{\"out_request_no\":\"" + generateCode() + "\",\"out_trade_no\":\"" +  id.toString() + "\",\"refund_amount\":\"" + amount.toString() + "\"}");
 
         // 调用退款接口
         AlipayTradeRefundResponse response;
