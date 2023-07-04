@@ -9,6 +9,12 @@ import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradeRefundRequest;
 import com.alipay.api.response.AlipayTradeRefundResponse;
 import jakarta.servlet.ServletException;
+import lombok.RequiredArgsConstructor;
+import org.fffd.l23o6.dao.OrderDao;
+import org.fffd.l23o6.dao.UserDao;
+import org.fffd.l23o6.pojo.entity.OrderEntity;
+import org.fffd.l23o6.pojo.entity.UserEntity;
+import org.fffd.l23o6.pojo.enum_.OrderStatus;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -17,7 +23,6 @@ import java.util.Random;
 
 @Component
 public class AlipayPaymentStrategy extends PaymentStrategy{
-
 
     public String payment(BigDecimal amount, Long id) throws ServletException, IOException {
         System.out.println("使用支付宝支付"+amount);
@@ -48,7 +53,6 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
         /** 设置业务参数  **/
         AlipayTradePagePayModel model = new AlipayTradePagePayModel();
 
-        //TODO：订单号（finished）
         /** 商户订单号,商户自定义，需保证在商户端不重复，如：20200612000001 **/
         //model.setOutTradeNo("20200612000032");
         model.setOutTradeNo(id.toString());
