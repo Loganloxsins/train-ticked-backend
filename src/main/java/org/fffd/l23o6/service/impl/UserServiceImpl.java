@@ -24,19 +24,20 @@ public class UserServiceImpl implements UserService {
             throw new BizException(BizError.USERNAME_EXISTS);
         }
 
-        if(role.equals("passenger")) {
+//        if(role.equals("passenger")) {
             userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
                     .name(name).idn(idn).phone(phone).type(type).mileagePoints(0L).isMember(false).role(role).build());
-        }
-        else {
-            userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
-                    .name(name).idn(idn).phone(phone).type(type).role(role).build());
-        }
+//        }
+//        else {
+//            userDao.save(UserEntity.builder().username(username).password(BCrypt.hashpw(password))
+//                    .name(name).idn(idn).phone(phone).type(type).role(role).build());
+//        }
     }
 
     @Override
     public UserVO findByUserName(String username) {
         UserEntity user=userDao.findByUsername(username);
+        System.out.println(user.getName());
         return UserVO.builder()
                 .username(user.getUsername())
                 .name(user.getName())
