@@ -50,6 +50,17 @@ public class KSeriesSeatStrategy extends TrainSeatStrategy {
         for(int i=0;i<20;i++) NO_SEAT_MAP.put(counter++,"无座");
     }
 
+    public Integer findSeatNumberByInfo(String seatInfo) {
+        for (Map<Integer, String> seatMap : TYPE_MAP.values()) {
+            for (Map.Entry<Integer, String> entry : seatMap.entrySet()) {
+                if (entry.getValue().equals(seatInfo)) {
+                    return entry.getKey();
+                }
+            }
+        }
+        return null;
+    }
+
     public enum KSeriesSeatType implements SeatType {
         SOFT_SLEEPER_SEAT("软卧"), HARD_SLEEPER_SEAT("硬卧"), SOFT_SEAT("软座"), HARD_SEAT("硬座"), NO_SEAT("无座");
         private String text;
