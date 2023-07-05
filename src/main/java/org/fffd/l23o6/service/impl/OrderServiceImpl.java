@@ -2,6 +2,7 @@ package org.fffd.l23o6.service.impl;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -127,11 +128,16 @@ public class OrderServiceImpl implements OrderService {
                 break;
         }
 
+        System.out.println(startStationIndex);
+        System.out.println(endStationIndex);
+
         boolean[][] seatMap = train.getSeats();
         for (int i = startStationIndex; i < endStationIndex; i++) {
+            System.out.println(i);
             boolean[] seats = seatMap[i];
             seats[seatNumber] = false;
         }
+
 
         if (order.getStatus() == OrderStatus.CANCELLED) {
             throw new BizException(BizError.ILLEAGAL_ORDER_STATUS);
@@ -169,6 +175,7 @@ public class OrderServiceImpl implements OrderService {
 
         order.setStatus(OrderStatus.CANCELLED);
         orderDao.save(order);
+        trainDao.save(train);
     }
 
     public String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {
