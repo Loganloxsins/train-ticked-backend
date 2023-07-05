@@ -148,27 +148,11 @@ public class OrderServiceImpl implements OrderService {
             userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())-price*5L);
             userDao.save(userEntity);
         }
-        /**
-        Integer price=order.getPrice();
-        PaymentService paymentService=new PaymentService();
-        switch (type){
-            case "支付宝支付":
-                paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price), id);
-            case "微信支付":
-                //paymentService.payment(new WechatPaymentStrategy(), BigDecimal.valueOf(price), id);
-                break;
-            case "积分支付":
-                //paymentService.payment(new CreditPaymentStrategy(), BigDecimal.valueOf(price), id);
-                break;
-        }
-        Long userId=order.getUserId();
-        UserEntity userEntity=userDao.findById(userId).get();
-        userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())+price*5L);
-        userDao.save(userEntity);
-         **/
 
+        train.setUpdatedAt(null);// force it to update
         order.setStatus(OrderStatus.CANCELLED);
         orderDao.save(order);
+        trainDao.save(train);
     }
 
     public String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {
