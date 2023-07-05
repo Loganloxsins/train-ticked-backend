@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO findByUserName(String username) {
         UserEntity user=userDao.findByUsername(username);
-        System.out.println(user.getName());
         return UserVO.builder()
                 .username(user.getUsername())
                 .name(user.getName())
