@@ -109,7 +109,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public void cancelOrder(Long id) throws ServletException, AlipayApiException, IOException {
-        //TODO: add seats after cancel order
+        //TODO(solved): add seats after cancel order
         OrderEntity order = orderDao.findById(id).get();
         TrainEntity train = trainDao.findById(order.getTrainId()).get();
         RouteEntity route = routeDao.findById(train.getRouteId()).get();
