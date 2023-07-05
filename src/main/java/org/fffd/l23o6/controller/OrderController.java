@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +51,7 @@ public class OrderController {
     }
 
     @PatchMapping("order/{orderId}")
-    public CommonResponse<String> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException, ServletException, IOException {
+    public CommonResponse<String> patchOrder(@PathVariable("orderId") Long orderId, @Valid @RequestBody PatchOrderRequest request) throws AlipayApiException, ServletException, IOException, ParseException {
 
         switch (request.getStatus()) {
             case PAID:

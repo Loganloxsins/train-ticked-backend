@@ -2,7 +2,10 @@ package org.fffd.l23o6.service.impl;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -109,7 +112,7 @@ public class OrderServiceImpl implements OrderService {
                 .build();
     }
 
-    public void cancelOrder(Long id) throws ServletException, AlipayApiException, IOException {
+    public void cancelOrder(Long id) throws ServletException, AlipayApiException, IOException, ParseException {
         //TODO(solved): add seats after cancel order
         OrderEntity order = orderDao.findById(id).get();
         TrainEntity train = trainDao.findById(order.getTrainId()).get();
@@ -128,12 +131,9 @@ public class OrderServiceImpl implements OrderService {
                 break;
         }
 
-        System.out.println(startStationIndex);
-        System.out.println(endStationIndex);
 
         boolean[][] seatMap = train.getSeats();
         for (int i = startStationIndex; i < endStationIndex; i++) {
-            System.out.println(i);
             boolean[] seats = seatMap[i];
             seats[seatNumber] = false;
         }
@@ -146,9 +146,23 @@ public class OrderServiceImpl implements OrderService {
         // TODO(solved): refund user's money and credits if needed
 
         if(order.getStatus() == OrderStatus.COMPLETED ){
+            long nd=1000*24*60*60;
+
+            SimpleDateFormat ft=new SimpleDateFormat("yyyy-MM-dd");
+            Date nowDate=new Date();
+            Date departeDate=ft.parse(train.getDate());
+
+            long diff=departeDate.getTime() - nowDate.getTime();
+            long day=diff/nd;
+            double rate;
+            if(day>=8) rate=1;
+            else if(day>=2) rate=0.95;
+            else if(day>=1) rate=0.9;
+            else rate=0.8;
+
             Integer price=order.getPrice();
             PaymentService paymentService=new PaymentService();
-            paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price*0.6), id);
+            paymentService.refund(new AlipayPaymentStrategy(), BigDecimal.valueOf(price*rate), id);
             Long userId=order.getUserId();
             UserEntity userEntity=userDao.findById(userId).get();
             userEntity.setMileagePoints(userEntity.getMileagePoints()+discountToPoints(order.getDiscount())-price*5L);
