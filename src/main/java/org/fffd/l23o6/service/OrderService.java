@@ -17,6 +17,6 @@ public interface OrderService {
     String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException;
     Integer usePoints(Long orderId);
     Integer cancelUsePoints(Long orderId);
-
     void updateOrderAfterPaymentSuccess(Long id);
+    boolean checkIllegal(Long id);
 }

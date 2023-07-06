@@ -126,4 +126,9 @@ public class OrderController {
 
         return "failure"; // 返回给支付宝的响应字符串，表示通知接收失败
     }
+
+    @PostMapping("order/check/{orderId}")
+    public CommonResponse<Boolean> checkIllegal(@PathVariable("orderId") Long orderId){
+        return CommonResponse.success(orderService.checkIllegal(orderId));
+    }
 }

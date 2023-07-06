@@ -7,9 +7,9 @@
     <list default="true" id="4f7624bf-3da4-4b42-952f-a5af17a88f72" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/exception/BizError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/exception/BizError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/fffd/l23o6/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +140,8 @@
       <workItem from="1688347111854" duration="20079000" />
       <workItem from="1688435079891" duration="900000" />
       <workItem from="1688524358261" duration="2640000" />
-      <workItem from="1688563132157" duration="3535000" />
+      <workItem from="1688563132157" duration="3880000" />
+      <workItem from="1688605335246" duration="9743000" />
     </task>
     <task id="LOCAL-00001" summary="refund not finished">
       <created>1688383814312</created>
