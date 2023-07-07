@@ -114,7 +114,6 @@ public class AlipayPaymentStrategy extends PaymentStrategy{
 
 
     public String refund(BigDecimal amount, Long id) {
-        //TODO 判断时间
         //System.out.println(id);
 
         String URL = " https://openapi-sandbox.dl.alipaydev.com/gateway.do";
