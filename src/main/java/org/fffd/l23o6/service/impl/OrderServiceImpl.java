@@ -174,29 +174,6 @@ public class OrderServiceImpl implements OrderService {
         orderDao.save(order);
         trainDao.save(train);
 
-//        int cancelCount=0;
-//        int buyCount=0;
-//        List<OrderEntity> myOrders=orderDao.findByUserId(order.getUserId());
-//        String today=ft.format(nowDate);
-//        for(OrderEntity orderEntity:myOrders){
-//            String updateDate=ft.format(new Date(orderEntity.getUpdatedAt().getTime()));
-//            if(updateDate.equals(today)){
-//                if(orderEntity.getStatus()==OrderStatus.CANCELLED) cancelCount++;
-//                else if(orderEntity.getStatus()==OrderStatus.COMPLETED) buyCount++;
-//            }
-//        }
-//        System.out.println(cancelCount);
-//
-//        if(cancelCount>3||buyCount>5){
-//            UserEntity userEntity=userDao.findById(order.getUserId()).get();
-//            Long mileagePoints = userEntity.getMileagePoints();
-//            if(mileagePoints>=100) userEntity.setMileagePoints(userEntity.getMileagePoints()-100);
-//            else userEntity.setMileagePoints(0L);
-//            userDao.save(userEntity);
-//
-//            throw new BizException(BizError.ILLEAGAL_ACTION);
-//        }
-
     }
 
     public String payOrder(Long id, String type) throws AlipayApiException, ServletException, IOException {

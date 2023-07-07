@@ -1,5 +1,6 @@
 package org.fffd.l23o6.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -44,6 +45,13 @@ public class TrainServiceImpl implements TrainService {
                 .departureTimes(train.getDepartureTimes()).extraInfos(train.getExtraInfos()).build();
     }
 
+    private boolean checkHasDepart(TrainEntity trainEntity){
+        Date nowDate=new Date();
+        Date departDate=trainEntity.getDepartureTimes().get(0);
+        long diff = departDate.getTime()-nowDate.getTime();
+        return diff <= 0;
+    }
+
     @Override
     public List<TrainVO> listTrains(Long startStationId, Long endStationId, String date) {
         // TODO（solved）
@@ -61,6 +69,7 @@ public class TrainServiceImpl implements TrainService {
                     routeId=routeEntity.getId();
                     List<TrainEntity> trainEntities=trainDao.findByRouteIdAndDate(routeId, date);
                     for(TrainEntity trainEntity:trainEntities){
+                        if(checkHasDepart(trainEntity)) continue;
                         TrainVO trainVO=TrainMapper.INSTANCE.toTrainVO(trainEntity,startStationId,endStationId);
                         Date departureTime=trainEntity.getDepartureTimes().get(i);
                         Date arrivalTime=trainEntity.getArrivalTimes().get(j);
