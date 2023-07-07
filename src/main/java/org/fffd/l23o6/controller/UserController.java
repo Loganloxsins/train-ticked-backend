@@ -54,7 +54,7 @@ public class UserController {
 
 
     @PutMapping("user/vipregister")
-    public CommonResponse<?> registMember(@Valid @RequestBody MembershipRequest request) {
+    public CommonResponse<?> registerMember(@Valid @RequestBody MembershipRequest request) {
         StpUtil.checkLogin();
         userService.getMembership(StpUtil.getLoginIdAsString(),request.getVippassword());
         return CommonResponse.success();

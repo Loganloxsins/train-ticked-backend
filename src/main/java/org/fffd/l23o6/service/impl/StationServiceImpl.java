@@ -43,6 +43,10 @@ public class StationServiceImpl implements StationService{
     }
     @Override
     public void editStation(Long id, String name){
+        StationEntity station = stationDao.findByName(name);
+        if(station!=null){
+            throw new BizException(BizError.STATIONNAME_EXISTS);
+        }
         StationEntity entity = stationDao.findById(id).get();
         entity.setName(name);
         stationDao.save(entity);

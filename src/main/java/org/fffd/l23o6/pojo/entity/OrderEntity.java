@@ -21,7 +21,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class OrderEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,16 +42,13 @@ public class OrderEntity {
 
     @NotNull
     private String seat;
-
     @NotNull
     private Integer price;
-
     @NotNull
     private Integer discount;
 
     @CreationTimestamp
     private Date createdAt;
-
     @UpdateTimestamp
     private Date updatedAt;
 }
